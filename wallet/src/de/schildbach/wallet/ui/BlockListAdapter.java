@@ -24,14 +24,14 @@ import java.util.Set;
 
 import javax.annotation.Nullable;
 
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.Block;
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.core.StoredBlock;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.Transaction.Purpose;
-import org.bitcoinj.utils.MonetaryFormat;
-import org.bitcoinj.wallet.Wallet;
+import org.motacoinj.core.Address;
+import org.motacoinj.core.Block;
+import org.motacoinj.core.Coin;
+import org.motacoinj.core.StoredBlock;
+import org.motacoinj.core.Transaction;
+import org.motacoinj.core.Transaction.Purpose;
+import org.motacoinj.utils.MonetaryFormat;
+import org.motacoinj.wallet.Wallet;
 
 import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.data.AddressBookProvider;

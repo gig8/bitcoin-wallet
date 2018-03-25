@@ -19,8 +19,8 @@ package de.schildbach.wallet.ui;
 
 import javax.annotation.Nullable;
 
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.wallet.Wallet;
+import org.motacoinj.core.Coin;
+import org.motacoinj.wallet.Wallet;
 
 import com.google.common.base.Strings;
 
@@ -193,7 +193,7 @@ public final class ExchangeRatesFragment extends Fragment implements OnSharedPre
     public void onSharedPreferenceChanged(final SharedPreferences sharedPreferences, final String key) {
         if (Configuration.PREFS_KEY_EXCHANGE_CURRENCY.equals(key))
             adapter.setDefaultCurrency(config.getExchangeCurrencyCode());
-        else if (Configuration.PREFS_KEY_BTC_PRECISION.equals(key))
+        else if (Configuration.PREFS_KEY_MOTA_PRECISION.equals(key))
             adapter.setRateBase(config.getBtcBase());
     }
 

@@ -30,11 +30,11 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.VerificationException;
-import org.bitcoinj.core.VersionedChecksummedBytes;
-import org.bitcoinj.wallet.Wallet;
-import org.bitcoinj.wallet.Wallet.BalanceType;
+import org.motacoinj.core.Transaction;
+import org.motacoinj.core.VerificationException;
+import org.motacoinj.core.VersionedChecksummedBytes;
+import org.motacoinj.wallet.Wallet;
+import org.motacoinj.wallet.Wallet.BalanceType;
 
 import de.schildbach.wallet.Configuration;
 import de.schildbach.wallet.Constants;

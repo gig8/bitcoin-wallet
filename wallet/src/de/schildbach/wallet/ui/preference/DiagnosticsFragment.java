@@ -19,7 +19,7 @@ package de.schildbach.wallet.ui.preference;
 
 import java.util.Locale;
 
-import org.bitcoinj.crypto.DeterministicKey;
+import org.motacoinj.crypto.DeterministicKey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

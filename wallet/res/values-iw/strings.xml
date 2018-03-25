@@ -134,7 +134,7 @@
 	<string name="scan_camera_problem_dialog_message">בעיה במצלמה, אנא אחתל מחדש את המכשיר שלך.</string>
 	<string name="input_parser_io_error">לא יכול לקרוא מידע:\n%s</string>
 	<string name="input_parser_cannot_classify">לא יכול לסווג את הקלט:\n%s</string>
-	<string name="input_parser_invalid_bitcoin_uri">כתובת ביטקוין לא חוקית:\n%s</string>
+	<string name="input_parser_invalid_motacoin_uri">כתובת ביטקוין לא חוקית:\n%s</string>
 	<string name="input_parser_invalid_address">כתובת ביטקוין לא חוקית</string>
 	<string name="input_parser_unverifyable_paymentrequest">לא יכול לאמת בקשת תשלום:\n%s</string>
 	<string name="input_parser_invalid_paymentrequest">בקשת תשלום לא חוקית:\n%s</string>
@@ -171,7 +171,7 @@
 	<string name="about_title">על אודות</string>
 	<string name="about_license_title">רישיון</string>
 	<string name="about_category_credits">אפליקציה זו משתמשת ב</string>
-	<string name="about_credits_bitcoinj_title">bitcoinj %s</string>
+	<string name="about_credits_motacoinj_title">motacoinj %s</string>
 	<string name="about_credits_zxing_title">ZXing</string>
 	<string name="about_community_googleplus_title">קהילת גוגל+</string>
 	<string name="about_community_googleplus_summary">דיונים על אודות האפליקציה</string>

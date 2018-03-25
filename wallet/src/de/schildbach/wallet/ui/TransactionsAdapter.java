@@ -26,17 +26,17 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.core.Sha256Hash;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.Transaction.Purpose;
-import org.bitcoinj.core.TransactionConfidence;
-import org.bitcoinj.core.TransactionConfidence.ConfidenceType;
-import org.bitcoinj.utils.ExchangeRate;
-import org.bitcoinj.utils.MonetaryFormat;
-import org.bitcoinj.wallet.DefaultCoinSelector;
-import org.bitcoinj.wallet.Wallet;
+import org.motacoinj.core.Address;
+import org.motacoinj.core.Coin;
+import org.motacoinj.core.Sha256Hash;
+import org.motacoinj.core.Transaction;
+import org.motacoinj.core.Transaction.Purpose;
+import org.motacoinj.core.TransactionConfidence;
+import org.motacoinj.core.TransactionConfidence.ConfidenceType;
+import org.motacoinj.utils.ExchangeRate;
+import org.motacoinj.utils.MonetaryFormat;
+import org.motacoinj.wallet.DefaultCoinSelector;
+import org.motacoinj.wallet.Wallet;
 
 import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.data.AddressBookProvider;

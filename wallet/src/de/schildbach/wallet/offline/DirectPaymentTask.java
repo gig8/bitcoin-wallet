@@ -24,9 +24,9 @@ import java.io.InputStream;
 
 import javax.annotation.Nullable;
 
-import org.bitcoin.protocols.payments.Protos;
-import org.bitcoin.protocols.payments.Protos.Payment;
-import org.bitcoinj.protocols.payments.PaymentProtocol;
+import org.motacoin.protocols.payments.Protos;
+import org.motacoin.protocols.payments.Protos.Payment;
+import org.motacoinj.protocols.payments.PaymentProtocol;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

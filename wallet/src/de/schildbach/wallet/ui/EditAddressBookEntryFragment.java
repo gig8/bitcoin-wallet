@@ -19,8 +19,8 @@ package de.schildbach.wallet.ui;
 
 import javax.annotation.Nullable;
 
-import org.bitcoinj.core.Address;
-import org.bitcoinj.wallet.Wallet;
+import org.motacoinj.core.Address;
+import org.motacoinj.wallet.Wallet;
 
 import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.WalletApplication;

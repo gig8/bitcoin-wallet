@@ -22,10 +22,10 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import javax.annotation.Nullable;
 
-import org.bitcoinj.core.Address;
-import org.bitcoinj.uri.BitcoinURI;
-import org.bitcoinj.utils.Threading;
-import org.bitcoinj.wallet.Wallet;
+import org.motacoinj.core.Address;
+import org.motacoinj.uri.MotaCoinURI;
+import org.motacoinj.utils.Threading;
+import org.motacoinj.wallet.Wallet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -104,9 +104,9 @@ public final class WalletAddressFragment extends Fragment implements NfcAdapter.
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
             final Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.wallet_address_fragment, container, false);
-        currentAddressQrView = (ImageView) view.findViewById(R.id.bitcoin_address_qr);
+        currentAddressQrView = (ImageView) view.findViewById(R.id.motacoin_address_qr);
 
-        final CardView currentAddressQrCardView = (CardView) view.findViewById(R.id.bitcoin_address_qr_card);
+        final CardView currentAddressQrCardView = (CardView) view.findViewById(R.id.motacoin_address_qr_card);
         currentAddressQrCardView.setCardBackgroundColor(Color.WHITE);
         currentAddressQrCardView.setPreventCornerOverlap(false);
         currentAddressQrCardView.setOnClickListener(new OnClickListener() {
@@ -200,7 +200,7 @@ public final class WalletAddressFragment extends Fragment implements NfcAdapter.
 
         @Override
         public Address loadInBackground() {
-            org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+            org.motacoinj.core.Context.propagate(Constants.CONTEXT);
 
             return wallet.currentReceiveAddress();
         }
@@ -247,7 +247,7 @@ public final class WalletAddressFragment extends Fragment implements NfcAdapter.
             if (currentAddressQrAddress == null || !currentAddress.equals(currentAddressQrAddress.address)) {
                 currentAddressQrAddress = new AddressAndLabel(currentAddress, config.getOwnName());
 
-                final String addressStr = BitcoinURI.convertToBitcoinURI(currentAddressQrAddress.address, null,
+                final String addressStr = MotaCoinURI.convertToMotaCoinURI(currentAddressQrAddress.address, null,
                         currentAddressQrAddress.label, null);
 
                 currentAddressQrBitmap = new BitmapDrawable(getResources(), Qr.bitmap(addressStr));

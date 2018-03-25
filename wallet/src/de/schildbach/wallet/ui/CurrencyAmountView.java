@@ -19,9 +19,9 @@ package de.schildbach.wallet.ui;
 
 import javax.annotation.Nullable;
 
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.core.Monetary;
-import org.bitcoinj.utils.MonetaryFormat;
+import org.motacoinj.core.Coin;
+import org.motacoinj.core.Monetary;
+import org.motacoinj.utils.MonetaryFormat;
 
 import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.util.GenericUtils;
@@ -120,14 +120,14 @@ public final class CurrencyAmountView extends FrameLayout {
     }
 
     public void setCurrencySymbol(@Nullable final String currencyCode) {
-        if (MonetaryFormat.CODE_BTC.equals(currencyCode)) {
-            currencySymbolDrawable = getResources().getDrawable(R.drawable.currency_symbol_btc);
+        if (MonetaryFormat.CODE_MOTA.equals(currencyCode)) {
+            currencySymbolDrawable = getResources().getDrawable(R.drawable.currency_symbol_mota);
             localCurrencyCode = null;
-        } else if (MonetaryFormat.CODE_MBTC.equals(currencyCode)) {
-            currencySymbolDrawable = getResources().getDrawable(R.drawable.currency_symbol_mbtc);
+        } else if (MonetaryFormat.CODE_MMOTA.equals(currencyCode)) {
+            currencySymbolDrawable = getResources().getDrawable(R.drawable.currency_symbol_mmota);
             localCurrencyCode = null;
-        } else if (MonetaryFormat.CODE_UBTC.equals(currencyCode)) {
-            currencySymbolDrawable = getResources().getDrawable(R.drawable.currency_symbol_ubtc);
+        } else if (MonetaryFormat.CODE_UMOTA.equals(currencyCode)) {
+            currencySymbolDrawable = getResources().getDrawable(R.drawable.currency_symbol_umota);
             localCurrencyCode = null;
         } else if (currencyCode != null) // fiat
         {

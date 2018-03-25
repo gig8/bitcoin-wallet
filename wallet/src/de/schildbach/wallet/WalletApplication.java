@@ -24,16 +24,16 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.concurrent.TimeUnit;
 
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.VerificationException;
-import org.bitcoinj.core.VersionMessage;
-import org.bitcoinj.crypto.LinuxSecureRandom;
-import org.bitcoinj.crypto.MnemonicCode;
-import org.bitcoinj.utils.Threading;
-import org.bitcoinj.wallet.Protos;
-import org.bitcoinj.wallet.UnreadableWalletException;
-import org.bitcoinj.wallet.Wallet;
-import org.bitcoinj.wallet.WalletProtobufSerializer;
+import org.motacoinj.core.Transaction;
+import org.motacoinj.core.VerificationException;
+import org.motacoinj.core.VersionMessage;
+import org.motacoinj.crypto.LinuxSecureRandom;
+import org.motacoinj.crypto.MnemonicCode;
+import org.motacoinj.utils.Threading;
+import org.motacoinj.wallet.Protos;
+import org.motacoinj.wallet.UnreadableWalletException;
+import org.motacoinj.wallet.Wallet;
+import org.motacoinj.wallet.WalletProtobufSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -105,8 +105,8 @@ public class WalletApplication extends Application {
                 .permitDiskWrites().penaltyLog().build());
 
         Threading.throwOnLockCycles();
-        org.bitcoinj.core.Context.enableStrictMode();
-        org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+        org.motacoinj.core.Context.enableStrictMode();
+        org.motacoinj.core.Context.propagate(Constants.CONTEXT);
 
         log.info("=== starting app using configuration: {}, {}", Constants.TEST ? "test" : "prod",
                 Constants.NETWORK_PARAMETERS.getId());
@@ -120,7 +120,7 @@ public class WalletApplication extends Application {
         Threading.uncaughtExceptionHandler = new Thread.UncaughtExceptionHandler() {
             @Override
             public void uncaughtException(final Thread thread, final Throwable throwable) {
-                log.info("bitcoinj uncaught exception", throwable);
+                log.info("motacoinj uncaught exception", throwable);
                 CrashReporter.saveBackgroundTrace(throwable, packageInfo);
             }
         };

@@ -29,23 +29,23 @@ import java.util.regex.Pattern;
 
 import javax.annotation.Nullable;
 
-import org.bitcoin.protocols.payments.Protos;
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.AddressFormatException;
-import org.bitcoinj.core.DumpedPrivateKey;
-import org.bitcoinj.core.ProtocolException;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.VerificationException;
-import org.bitcoinj.core.VersionedChecksummedBytes;
-import org.bitcoinj.core.WrongNetworkException;
-import org.bitcoinj.crypto.BIP38PrivateKey;
-import org.bitcoinj.crypto.TrustStoreLoader;
-import org.bitcoinj.protocols.payments.PaymentProtocol;
-import org.bitcoinj.protocols.payments.PaymentProtocol.PkiVerificationData;
-import org.bitcoinj.protocols.payments.PaymentProtocolException;
-import org.bitcoinj.protocols.payments.PaymentSession;
-import org.bitcoinj.uri.BitcoinURI;
-import org.bitcoinj.uri.BitcoinURIParseException;
+import org.motacoin.protocols.payments.Protos;
+import org.motacoinj.core.Address;
+import org.motacoinj.core.AddressFormatException;
+import org.motacoinj.core.DumpedPrivateKey;
+import org.motacoinj.core.ProtocolException;
+import org.motacoinj.core.Transaction;
+import org.motacoinj.core.VerificationException;
+import org.motacoinj.core.VersionedChecksummedBytes;
+import org.motacoinj.core.WrongNetworkException;
+import org.motacoinj.crypto.BIP38PrivateKey;
+import org.motacoinj.crypto.TrustStoreLoader;
+import org.motacoinj.protocols.payments.PaymentProtocol;
+import org.motacoinj.protocols.payments.PaymentProtocol.PkiVerificationData;
+import org.motacoinj.protocols.payments.PaymentProtocolException;
+import org.motacoinj.protocols.payments.PaymentSession;
+import org.motacoinj.uri.MotaCoinURI;
+import org.motacoinj.uri.MotaCoinURIParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -95,18 +95,18 @@ public abstract class InputParser {
 
                     error(R.string.input_parser_invalid_paymentrequest, x.getMessage());
                 }
-            } else if (input.startsWith("bitcoin:")) {
+            } else if (input.startsWith("motacoin:")) {
                 try {
-                    final BitcoinURI bitcoinUri = new BitcoinURI(null, input);
-                    final Address address = bitcoinUri.getAddress();
+                    final MotaCoinURI motacoinUri = new MotaCoinURI(null, input);
+                    final Address address = motacoinUri.getAddress();
                     if (address != null && !Constants.NETWORK_PARAMETERS.equals(address.getParameters()))
-                        throw new BitcoinURIParseException("mismatched network");
+                        throw new MotaCoinURIParseException("mismatched network");
 
-                    handlePaymentIntent(PaymentIntent.fromBitcoinUri(bitcoinUri));
-                } catch (final BitcoinURIParseException x) {
-                    log.info("got invalid bitcoin uri: '" + input + "'", x);
+                    handlePaymentIntent(PaymentIntent.fromMotaCoinUri(motacoinUri));
+                } catch (final MotaCoinURIParseException x) {
+                    log.info("got invalid motacoin uri: '" + input + "'", x);
 
-                    error(R.string.input_parser_invalid_bitcoin_uri, input);
+                    error(R.string.input_parser_invalid_motacoin_uri, input);
                 }
             } else if (PATTERN_TRANSACTION.matcher(input).matches()) {
                 try {

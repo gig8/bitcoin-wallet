@@ -28,25 +28,25 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
-import org.bitcoin.protocols.payments.Protos.Payment;
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.AddressFormatException;
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.core.InsufficientMoneyException;
-import org.bitcoinj.core.Sha256Hash;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.TransactionConfidence;
-import org.bitcoinj.core.TransactionConfidence.ConfidenceType;
-import org.bitcoinj.core.VerificationException;
-import org.bitcoinj.core.VersionedChecksummedBytes;
-import org.bitcoinj.protocols.payments.PaymentProtocol;
-import org.bitcoinj.utils.MonetaryFormat;
-import org.bitcoinj.wallet.KeyChain.KeyPurpose;
-import org.bitcoinj.wallet.SendRequest;
-import org.bitcoinj.wallet.Wallet;
-import org.bitcoinj.wallet.Wallet.BalanceType;
-import org.bitcoinj.wallet.Wallet.CouldNotAdjustDownwards;
-import org.bitcoinj.wallet.Wallet.DustySendRequested;
+import org.motacoin.protocols.payments.Protos.Payment;
+import org.motacoinj.core.Address;
+import org.motacoinj.core.AddressFormatException;
+import org.motacoinj.core.Coin;
+import org.motacoinj.core.InsufficientMoneyException;
+import org.motacoinj.core.Sha256Hash;
+import org.motacoinj.core.Transaction;
+import org.motacoinj.core.TransactionConfidence;
+import org.motacoinj.core.TransactionConfidence.ConfidenceType;
+import org.motacoinj.core.VerificationException;
+import org.motacoinj.core.VersionedChecksummedBytes;
+import org.motacoinj.protocols.payments.PaymentProtocol;
+import org.motacoinj.utils.MonetaryFormat;
+import org.motacoinj.wallet.KeyChain.KeyPurpose;
+import org.motacoinj.wallet.SendRequest;
+import org.motacoinj.wallet.Wallet;
+import org.motacoinj.wallet.Wallet.BalanceType;
+import org.motacoinj.wallet.Wallet.CouldNotAdjustDownwards;
+import org.motacoinj.wallet.Wallet.DustySendRequested;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spongycastle.crypto.params.KeyParameter;
@@ -64,7 +64,7 @@ import de.schildbach.wallet.data.ExchangeRatesLoader;
 import de.schildbach.wallet.data.ExchangeRatesProvider;
 import de.schildbach.wallet.data.PaymentIntent;
 import de.schildbach.wallet.data.PaymentIntent.Standard;
-import de.schildbach.wallet.integration.android.BitcoinIntegration;
+import de.schildbach.wallet.integration.android.MotaCoinIntegration;
 import de.schildbach.wallet.offline.DirectPaymentTask;
 import de.schildbach.wallet.service.BlockchainService;
 import de.schildbach.wallet.service.BlockchainState;
@@ -502,8 +502,8 @@ public final class SendCoinsFragment extends Fragment {
             final String mimeType = intent.getType();
 
             if ((Intent.ACTION_VIEW.equals(action) || NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action))
-                    && intentUri != null && "bitcoin".equals(scheme)) {
-                initStateFromBitcoinUri(intentUri);
+                    && intentUri != null && "motacoin".equals(scheme)) {
+                initStateFromMotaCoinUri(intentUri);
             } else if ((NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action))
                     && PaymentProtocol.MIMETYPE_PAYMENTREQUEST.equals(mimeType)) {
                 final NdefMessage ndefMessage = (NdefMessage) intent
@@ -513,7 +513,7 @@ public final class SendCoinsFragment extends Fragment {
                 initStateFromPaymentRequest(mimeType, ndefMessagePayload);
             } else if ((Intent.ACTION_VIEW.equals(action))
                     && PaymentProtocol.MIMETYPE_PAYMENTREQUEST.equals(mimeType)) {
-                final byte[] paymentRequest = BitcoinIntegration.paymentRequestFromIntent(intent);
+                final byte[] paymentRequest = MotaCoinIntegration.paymentRequestFromIntent(intent);
 
                 if (intentUri != null)
                     initStateFromIntentUri(mimeType, intentUri);
@@ -553,15 +553,15 @@ public final class SendCoinsFragment extends Fragment {
 
         amountGroup = view.findViewById(R.id.send_coins_amount_group);
 
-        final CurrencyAmountView btcAmountView = (CurrencyAmountView) view.findViewById(R.id.send_coins_amount_btc);
-        btcAmountView.setCurrencySymbol(config.getFormat().code());
-        btcAmountView.setInputFormat(config.getMaxPrecisionFormat());
-        btcAmountView.setHintFormat(config.getFormat());
+        final CurrencyAmountView motaAmountView = (CurrencyAmountView) view.findViewById(R.id.send_coins_amount_mota);
+        motaAmountView.setCurrencySymbol(config.getFormat().code());
+        motaAmountView.setInputFormat(config.getMaxPrecisionFormat());
+        motaAmountView.setHintFormat(config.getFormat());
 
         final CurrencyAmountView localAmountView = (CurrencyAmountView) view.findViewById(R.id.send_coins_amount_local);
         localAmountView.setInputFormat(Constants.LOCAL_FORMAT);
         localAmountView.setHintFormat(Constants.LOCAL_FORMAT);
-        amountCalculatorLink = new CurrencyCalculatorLink(btcAmountView, localAmountView);
+        amountCalculatorLink = new CurrencyCalculatorLink(motaAmountView, localAmountView);
         amountCalculatorLink.setExchangeDirection(config.getLastExchangeDirection());
 
         directPaymentEnableView = (CheckBox) view.findViewById(R.id.send_coins_direct_payment_enable);
@@ -917,11 +917,11 @@ public final class SendCoinsFragment extends Fragment {
         if (fee.isGreaterThan(finalAmount)) {
             setState(State.INPUT);
 
-            final MonetaryFormat btcFormat = config.getFormat();
+            final MonetaryFormat motaFormat = config.getFormat();
             final DialogBuilder dialog = DialogBuilder.warn(activity,
                     R.string.send_coins_fragment_significant_fee_title);
-            dialog.setMessage(getString(R.string.send_coins_fragment_significant_fee_message, btcFormat.format(fee),
-                    btcFormat.format(finalAmount)));
+            dialog.setMessage(getString(R.string.send_coins_fragment_significant_fee_message, motaFormat.format(fee),
+                    motaFormat.format(finalAmount)));
             dialog.setPositiveButton(R.string.send_coins_fragment_button_send, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(final DialogInterface dialog, final int which) {
@@ -961,9 +961,9 @@ public final class SendCoinsFragment extends Fragment {
                     log.info("returning result to calling activity: {}", callingActivity.flattenToString());
 
                     final Intent result = new Intent();
-                    BitcoinIntegration.transactionHashToResult(result, sentTransaction.getHashAsString());
+                    MotaCoinIntegration.transactionHashToResult(result, sentTransaction.getHashAsString());
                     if (paymentIntent.standard == Standard.BIP70)
-                        BitcoinIntegration.paymentToResult(result, payment.toByteArray());
+                        MotaCoinIntegration.paymentToResult(result, payment.toByteArray());
                     activity.setResult(Activity.RESULT_OK, result);
                 }
             }
@@ -1015,16 +1015,16 @@ public final class SendCoinsFragment extends Fragment {
                 final Coin available = wallet.getBalance(BalanceType.AVAILABLE);
                 final Coin pending = estimated.subtract(available);
 
-                final MonetaryFormat btcFormat = config.getFormat();
+                final MonetaryFormat motaFormat = config.getFormat();
 
                 final DialogBuilder dialog = DialogBuilder.warn(activity,
                         R.string.send_coins_fragment_insufficient_money_title);
                 final StringBuilder msg = new StringBuilder();
-                msg.append(getString(R.string.send_coins_fragment_insufficient_money_msg1, btcFormat.format(missing)));
+                msg.append(getString(R.string.send_coins_fragment_insufficient_money_msg1, motaFormat.format(missing)));
 
                 if (pending.signum() > 0)
                     msg.append("\n\n")
-                            .append(getString(R.string.send_coins_fragment_pending, btcFormat.format(pending)));
+                            .append(getString(R.string.send_coins_fragment_pending, motaFormat.format(pending)));
                 if (paymentIntent.mayEditAmount())
                     msg.append("\n\n").append(getString(R.string.send_coins_fragment_insufficient_money_msg2));
                 dialog.setMessage(msg);
@@ -1137,7 +1137,7 @@ public final class SendCoinsFragment extends Fragment {
             return;
 
         if (paymentIntent != null) {
-            final MonetaryFormat btcFormat = config.getFormat();
+            final MonetaryFormat motaFormat = config.getFormat();
 
             getView().setVisibility(View.VISIBLE);
 
@@ -1231,7 +1231,7 @@ public final class SendCoinsFragment extends Fragment {
                         hintView.setText(getString(R.string.send_coins_fragment_hint_dusty_send));
                     else if (dryrunException instanceof InsufficientMoneyException)
                         hintView.setText(getString(R.string.send_coins_fragment_hint_insufficient_money,
-                                btcFormat.format(((InsufficientMoneyException) dryrunException).missing)));
+                                motaFormat.format(((InsufficientMoneyException) dryrunException).missing)));
                     else if (dryrunException instanceof CouldNotAdjustDownwards)
                         hintView.setText(getString(R.string.send_coins_fragment_hint_empty_wallet_failed));
                     else
@@ -1251,7 +1251,7 @@ public final class SendCoinsFragment extends Fragment {
                         colorResId = R.color.fg_insignificant;
                     }
                     hintView.setTextColor(getResources().getColor(colorResId));
-                    hintView.setText(getString(hintResId, btcFormat.format(dryrunTransaction.getFee())));
+                    hintView.setText(getString(hintResId, motaFormat.format(dryrunTransaction.getFee())));
                 } else if (paymentIntent.mayEditAddress() && validatedAddress != null
                         && wallet.isPubKeyHashMine(validatedAddress.address.getHash160())) {
                     hintView.setTextColor(getResources().getColor(R.color.fg_insignificant));
@@ -1262,7 +1262,7 @@ public final class SendCoinsFragment extends Fragment {
 
             if (sentTransaction != null) {
                 sentTransactionView.setVisibility(View.VISIBLE);
-                sentTransactionAdapter.setFormat(btcFormat);
+                sentTransactionAdapter.setFormat(motaFormat);
                 sentTransactionAdapter.replace(sentTransaction);
                 sentTransactionAdapter.bindViewHolder(sentTransactionViewHolder, 0);
             } else {
@@ -1339,8 +1339,8 @@ public final class SendCoinsFragment extends Fragment {
         updateStateFrom(paymentIntent);
     }
 
-    private void initStateFromBitcoinUri(final Uri bitcoinUri) {
-        final String input = bitcoinUri.toString();
+    private void initStateFromMotaCoinUri(final Uri motacoinUri) {
+        final String input = motacoinUri.toString();
 
         new StringInputParser(input) {
             @Override
@@ -1379,9 +1379,9 @@ public final class SendCoinsFragment extends Fragment {
         }.parse();
     }
 
-    private void initStateFromIntentUri(final String mimeType, final Uri bitcoinUri) {
+    private void initStateFromIntentUri(final String mimeType, final Uri motacoinUri) {
         try {
-            final InputStream is = contentResolver.openInputStream(bitcoinUri);
+            final InputStream is = contentResolver.openInputStream(motacoinUri);
 
             new StreamInputParser(mimeType, is) {
                 @Override

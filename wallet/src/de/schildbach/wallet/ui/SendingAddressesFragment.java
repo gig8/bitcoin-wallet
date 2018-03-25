@@ -20,15 +20,15 @@ package de.schildbach.wallet.ui;
 import java.util.Collections;
 import java.util.List;
 
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.AddressFormatException;
-import org.bitcoinj.core.ECKey;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.VerificationException;
-import org.bitcoinj.crypto.DeterministicKey;
-import org.bitcoinj.uri.BitcoinURI;
-import org.bitcoinj.uri.BitcoinURIParseException;
-import org.bitcoinj.wallet.Wallet;
+import org.motacoinj.core.Address;
+import org.motacoinj.core.AddressFormatException;
+import org.motacoinj.core.ECKey;
+import org.motacoinj.core.Transaction;
+import org.motacoinj.core.VerificationException;
+import org.motacoinj.crypto.DeterministicKey;
+import org.motacoinj.uri.MotaCoinURI;
+import org.motacoinj.uri.MotaCoinURIParseException;
+import org.motacoinj.wallet.Wallet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -342,12 +342,12 @@ public final class SendingAddressesFragment extends FancyListFragment
     }
 
     private void handleShowQr(final String address, final String label) {
-        final String uri = BitcoinURI.convertToBitcoinURI(Constants.NETWORK_PARAMETERS, address, null, label, null);
+        final String uri = MotaCoinURI.convertToMotaCoinURI(Constants.NETWORK_PARAMETERS, address, null, label, null);
         BitmapFragment.show(getFragmentManager(), Qr.bitmap(uri));
     }
 
     private void handleCopyToClipboard(final String address) {
-        clipboardManager.setPrimaryClip(ClipData.newPlainText("Bitcoin address", address));
+        clipboardManager.setPrimaryClip(ClipData.newPlainText("MotaCoin address", address));
         log.info("sending address copied to clipboard: {}", address.toString());
         new Toast(activity).toast(R.string.wallet_address_fragment_clipboard_msg);
     }
@@ -394,8 +394,8 @@ public final class SendingAddressesFragment extends FancyListFragment
             if (clipUri == null)
                 return null;
             try {
-                return new BitcoinURI(clipUri.toString()).getAddress();
-            } catch (final BitcoinURIParseException x) {
+                return new MotaCoinURI(clipUri.toString()).getAddress();
+            } catch (final MotaCoinURIParseException x) {
                 return null;
             }
         } else {

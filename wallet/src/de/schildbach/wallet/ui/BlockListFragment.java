@@ -23,10 +23,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.RejectedExecutionException;
 
-import org.bitcoinj.core.Sha256Hash;
-import org.bitcoinj.core.StoredBlock;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.wallet.Wallet;
+import org.motacoinj.core.Sha256Hash;
+import org.motacoinj.core.StoredBlock;
+import org.motacoinj.core.Transaction;
+import org.motacoinj.wallet.Wallet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -286,7 +286,7 @@ public final class BlockListFragment extends Fragment implements BlockListAdapte
 
         @Override
         public Set<Transaction> loadInBackground() {
-            org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+            org.motacoinj.core.Context.propagate(Constants.CONTEXT);
 
             final Set<Transaction> transactions = wallet.getTransactions(true);
 

@@ -17,7 +17,7 @@
 
 package de.schildbach.wallet.service;
 
-import org.bitcoinj.wallet.Wallet;
+import org.motacoinj.wallet.Wallet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -72,7 +72,7 @@ public final class UpgradeWalletService extends IntentService {
 
     @Override
     protected void onHandleIntent(final Intent intent) {
-        org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+        org.motacoinj.core.Context.propagate(Constants.CONTEXT);
 
         final Wallet wallet = application.getWallet();
 

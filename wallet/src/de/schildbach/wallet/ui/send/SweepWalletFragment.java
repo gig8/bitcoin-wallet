@@ -27,28 +27,28 @@ import java.util.TreeSet;
 
 import javax.annotation.Nullable;
 
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.core.DumpedPrivateKey;
-import org.bitcoinj.core.ECKey;
-import org.bitcoinj.core.NetworkParameters;
-import org.bitcoinj.core.Sha256Hash;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.TransactionConfidence;
-import org.bitcoinj.core.TransactionConfidence.ConfidenceType;
-import org.bitcoinj.core.TransactionInput;
-import org.bitcoinj.core.TransactionOutPoint;
-import org.bitcoinj.core.TransactionOutput;
-import org.bitcoinj.core.UTXO;
-import org.bitcoinj.core.VerificationException;
-import org.bitcoinj.core.VersionedChecksummedBytes;
-import org.bitcoinj.crypto.BIP38PrivateKey;
-import org.bitcoinj.utils.MonetaryFormat;
-import org.bitcoinj.wallet.KeyChainGroup;
-import org.bitcoinj.wallet.SendRequest;
-import org.bitcoinj.wallet.Wallet;
-import org.bitcoinj.wallet.Wallet.BalanceType;
-import org.bitcoinj.wallet.WalletTransaction;
+import org.motacoinj.core.Address;
+import org.motacoinj.core.Coin;
+import org.motacoinj.core.DumpedPrivateKey;
+import org.motacoinj.core.ECKey;
+import org.motacoinj.core.NetworkParameters;
+import org.motacoinj.core.Sha256Hash;
+import org.motacoinj.core.Transaction;
+import org.motacoinj.core.TransactionConfidence;
+import org.motacoinj.core.TransactionConfidence.ConfidenceType;
+import org.motacoinj.core.TransactionInput;
+import org.motacoinj.core.TransactionOutPoint;
+import org.motacoinj.core.TransactionOutput;
+import org.motacoinj.core.UTXO;
+import org.motacoinj.core.VerificationException;
+import org.motacoinj.core.VersionedChecksummedBytes;
+import org.motacoinj.crypto.BIP38PrivateKey;
+import org.motacoinj.utils.MonetaryFormat;
+import org.motacoinj.wallet.KeyChainGroup;
+import org.motacoinj.wallet.SendRequest;
+import org.motacoinj.wallet.Wallet;
+import org.motacoinj.wallet.Wallet.BalanceType;
+import org.motacoinj.wallet.WalletTransaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -572,11 +572,11 @@ public class SweepWalletFragment extends Fragment {
     }
 
     private void updateView() {
-        final MonetaryFormat btcFormat = config.getFormat();
+        final MonetaryFormat motaFormat = config.getFormat();
 
         if (walletToSweep != null) {
             balanceView.setVisibility(View.VISIBLE);
-            final MonetarySpannable balanceSpannable = new MonetarySpannable(btcFormat,
+            final MonetarySpannable balanceSpannable = new MonetarySpannable(motaFormat,
                     walletToSweep.getBalance(BalanceType.ESTIMATED));
             balanceSpannable.applyMarkup(null, null);
             final SpannableStringBuilder balance = new SpannableStringBuilder(balanceSpannable);
@@ -604,7 +604,7 @@ public class SweepWalletFragment extends Fragment {
 
         if (sentTransaction != null) {
             sweepTransactionView.setVisibility(View.VISIBLE);
-            sweepTransactionAdapter.setFormat(btcFormat);
+            sweepTransactionAdapter.setFormat(motaFormat);
             sweepTransactionAdapter.replace(sentTransaction);
             sweepTransactionAdapter.bindViewHolder(sweepTransactionViewHolder, 0);
         } else {

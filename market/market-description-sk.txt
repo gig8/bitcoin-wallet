@@ -1,18 +1,18 @@
-Bitcoiny vždy so sebou vo svojom vrecku. Jednoduché a rýchle platby pomocou QR kódov. Pre obchodníkov ponúka spoľahlivé a okamžité prijímanie platieb. Bitcoin Wallet je prvá mobilná Bitcoin aplikácia a preukázateľne aj najbezpečnejšia.
+MotaCoiny vždy so sebou vo svojom vrecku. Jednoduché a rýchle platby pomocou QR kódov. Pre obchodníkov ponúka spoľahlivé a okamžité prijímanie platieb. MotaCoin Wallet je prvá mobilná MotaCoin aplikácia a preukázateľne aj najbezpečnejšia.
 
 FUNKCIE:
 
 • Nie je potrebná žiadna registrácia ani žiadny účet.
-• Zobrazenie zostatku Bitcoinov v BTC alebo mBTC.
-• Prepočet hodnoty Bitcoinov do viacerých cudzích mien.
-• Posielanie a prijímanie Bitcoinov pomocou NFC, QR kódov alebo Bitcoin adries.
-• Adresár pre často používané Bitcoin adresy.
+• Zobrazenie zostatku MotaCoinov v MOTA alebo mMOTA.
+• Prepočet hodnoty MotaCoinov do viacerých cudzích mien.
+• Posielanie a prijímanie MotaCoinov pomocou NFC, QR kódov alebo MotaCoin adries.
+• Adresár pre často používané MotaCoin adresy.
 • V offline režime je platba možná aj cez Bluetooth.
-• Notifikácie v stavovej lište pri prijatí Bitcoinov.
+• Notifikácie v stavovej lište pri prijatí MotaCoinov.
 • Widget s celkovým zostatkom.
 
-Ak chcete prispieť do projektu Bitcoin Wallet nájdete ho na adrese
-https://github.com/bitcoin-wallet/bitcoin-wallet
+Ak chcete prispieť do projektu MotaCoin Wallet nájdete ho na adrese
+https://github.com/motacoin-wallet/motacoin-wallet
 
 Licencia: GPLv3
 Použitie len na vlastné riziko!

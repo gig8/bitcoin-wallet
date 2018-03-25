@@ -23,14 +23,14 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.core.Sha256Hash;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.TransactionOutput;
-import org.bitcoinj.crypto.KeyCrypterException;
-import org.bitcoinj.wallet.KeyChain.KeyPurpose;
-import org.bitcoinj.wallet.SendRequest;
-import org.bitcoinj.wallet.Wallet;
+import org.motacoinj.core.Coin;
+import org.motacoinj.core.Sha256Hash;
+import org.motacoinj.core.Transaction;
+import org.motacoinj.core.TransactionOutput;
+import org.motacoinj.crypto.KeyCrypterException;
+import org.motacoinj.wallet.KeyChain.KeyPurpose;
+import org.motacoinj.wallet.SendRequest;
+import org.motacoinj.wallet.Wallet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spongycastle.crypto.params.KeyParameter;

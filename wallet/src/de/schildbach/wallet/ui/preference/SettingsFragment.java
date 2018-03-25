@@ -52,7 +52,7 @@ public final class SettingsFragment extends PreferenceFragment implements OnPref
     private HandlerThread backgroundThread;
     private Handler backgroundHandler;
 
-    private Preference btcPrecisionPreference;
+    private Preference motaPrecisionPreference;
     private Preference trustedPeerPreference;
     private Preference trustedPeerOnlyPreference;
 
@@ -78,8 +78,8 @@ public final class SettingsFragment extends PreferenceFragment implements OnPref
         backgroundThread.start();
         backgroundHandler = new Handler(backgroundThread.getLooper());
 
-        btcPrecisionPreference = findPreference(Configuration.PREFS_KEY_BTC_PRECISION);
-        btcPrecisionPreference.setOnPreferenceChangeListener(this);
+        motaPrecisionPreference = findPreference(Configuration.PREFS_KEY_MOTA_PRECISION);
+        motaPrecisionPreference.setOnPreferenceChangeListener(this);
 
         trustedPeerPreference = findPreference(Configuration.PREFS_KEY_TRUSTED_PEER);
         ((EditTextPreference) trustedPeerPreference).getEditText().setSingleLine();
@@ -98,7 +98,7 @@ public final class SettingsFragment extends PreferenceFragment implements OnPref
     public void onDestroy() {
         trustedPeerOnlyPreference.setOnPreferenceChangeListener(null);
         trustedPeerPreference.setOnPreferenceChangeListener(null);
-        btcPrecisionPreference.setOnPreferenceChangeListener(null);
+        motaPrecisionPreference.setOnPreferenceChangeListener(null);
 
         backgroundThread.getLooper().quit();
 
@@ -111,7 +111,7 @@ public final class SettingsFragment extends PreferenceFragment implements OnPref
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if (preference.equals(btcPrecisionPreference)) {
+                if (preference.equals(motaPrecisionPreference)) {
                     WalletBalanceWidgetProvider.updateWidgets(activity, application.getWallet());
                 } else if (preference.equals(trustedPeerPreference)) {
                     BlockchainService.stop(activity);

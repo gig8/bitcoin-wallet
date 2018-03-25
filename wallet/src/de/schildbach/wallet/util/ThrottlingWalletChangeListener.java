@@ -20,14 +20,14 @@ package de.schildbach.wallet.util;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.listeners.TransactionConfidenceEventListener;
-import org.bitcoinj.wallet.Wallet;
-import org.bitcoinj.wallet.listeners.WalletChangeEventListener;
-import org.bitcoinj.wallet.listeners.WalletCoinsReceivedEventListener;
-import org.bitcoinj.wallet.listeners.WalletCoinsSentEventListener;
-import org.bitcoinj.wallet.listeners.WalletReorganizeEventListener;
+import org.motacoinj.core.Coin;
+import org.motacoinj.core.Transaction;
+import org.motacoinj.core.listeners.TransactionConfidenceEventListener;
+import org.motacoinj.wallet.Wallet;
+import org.motacoinj.wallet.listeners.WalletChangeEventListener;
+import org.motacoinj.wallet.listeners.WalletCoinsReceivedEventListener;
+import org.motacoinj.wallet.listeners.WalletCoinsSentEventListener;
+import org.motacoinj.wallet.listeners.WalletReorganizeEventListener;
 
 import android.os.Handler;
 

@@ -28,13 +28,13 @@ import java.util.concurrent.RejectedExecutionException;
 
 import javax.annotation.Nullable;
 
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.ScriptException;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.Transaction.Purpose;
-import org.bitcoinj.core.TransactionConfidence.ConfidenceType;
-import org.bitcoinj.utils.Threading;
-import org.bitcoinj.wallet.Wallet;
+import org.motacoinj.core.Address;
+import org.motacoinj.core.ScriptException;
+import org.motacoinj.core.Transaction;
+import org.motacoinj.core.Transaction.Purpose;
+import org.motacoinj.core.TransactionConfidence.ConfidenceType;
+import org.motacoinj.utils.Threading;
+import org.motacoinj.wallet.Wallet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -122,7 +122,7 @@ public class WalletTransactionsFragment extends Fragment implements LoaderCallba
     private static final String ARG_DIRECTION = "direction";
 
     private static final long THROTTLE_MS = DateUtils.SECOND_IN_MILLIS;
-    private static final Uri KEY_ROTATION_URI = Uri.parse("https://bitcoin.org/en/alert/2013-08-11-android");
+    private static final Uri KEY_ROTATION_URI = Uri.parse("https://motacoin.org/en/alert/2013-08-11-android");
     private static final int SHOW_QR_THRESHOLD_BYTES = 2500;
 
     private static final Logger log = LoggerFactory.getLogger(WalletTransactionsFragment.class);
@@ -286,7 +286,7 @@ public class WalletTransactionsFragment extends Fragment implements LoaderCallba
         final boolean txSent = tx.getValue(wallet).signum() < 0;
         final Address txAddress = txSent ? WalletUtils.getToAddressOfSent(tx, wallet)
                 : WalletUtils.getWalletAddressOfReceived(tx, wallet);
-        final byte[] txSerialized = tx.unsafeBitcoinSerialize();
+        final byte[] txSerialized = tx.unsafeMotaCoinSerialize();
         final boolean txRotation = tx.getPurpose() == Purpose.KEY_ROTATION;
 
         final PopupMenu popupMenu = new PopupMenu(activity, view);
@@ -516,7 +516,7 @@ public class WalletTransactionsFragment extends Fragment implements LoaderCallba
 
         @Override
         public List<Transaction> loadInBackground() {
-            org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+            org.motacoinj.core.Context.propagate(Constants.CONTEXT);
 
             final Set<Transaction> transactions = wallet.getTransactions(true);
             final List<Transaction> filteredTransactions = new ArrayList<Transaction>(transactions.size());
@@ -582,7 +582,7 @@ public class WalletTransactionsFragment extends Fragment implements LoaderCallba
 
     @Override
     public void onSharedPreferenceChanged(final SharedPreferences sharedPreferences, final String key) {
-        if (Configuration.PREFS_KEY_BTC_PRECISION.equals(key) || Configuration.PREFS_KEY_REMIND_BACKUP.equals(key))
+        if (Configuration.PREFS_KEY_MOTA_PRECISION.equals(key) || Configuration.PREFS_KEY_REMIND_BACKUP.equals(key))
             updateView();
     }
 

@@ -17,9 +17,9 @@
 
 package de.schildbach.wallet.ui;
 
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.VerificationException;
-import org.bitcoinj.core.VersionedChecksummedBytes;
+import org.motacoinj.core.Transaction;
+import org.motacoinj.core.VerificationException;
+import org.motacoinj.core.VersionedChecksummedBytes;
 
 import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.WalletApplication;

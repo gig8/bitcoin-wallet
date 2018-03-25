@@ -28,7 +28,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
-import org.bitcoinj.wallet.WalletProtobufSerializer;
+import org.motacoinj.wallet.WalletProtobufSerializer;
 import org.junit.Test;
 
 /**
@@ -89,11 +89,11 @@ public class CryptoTest {
 
     @Test
     public void backups() throws Exception {
-        final byte[] backup = Crypto.decryptBytes(readBackupFromResource("bitcoin-wallet-backup-testnet-3.50"),
+        final byte[] backup = Crypto.decryptBytes(readBackupFromResource("motacoin-wallet-backup-testnet-3.50"),
                 PASSWORD);
         assertTrue(WalletProtobufSerializer.isWallet(new ByteArrayInputStream(backup)));
 
-        final byte[] backupCrLf = Crypto.decryptBytes(readBackupFromResource("bitcoin-wallet-backup-testnet-3.50-crlf"),
+        final byte[] backupCrLf = Crypto.decryptBytes(readBackupFromResource("motacoin-wallet-backup-testnet-3.50-crlf"),
                 PASSWORD);
         assertTrue(WalletProtobufSerializer.isWallet(new ByteArrayInputStream(backupCrLf)));
     }

@@ -17,8 +17,8 @@
 
 package de.schildbach.wallet.ui;
 
-import org.bitcoinj.core.Monetary;
-import org.bitcoinj.utils.MonetaryFormat;
+import org.motacoinj.core.Monetary;
+import org.motacoinj.utils.MonetaryFormat;
 
 import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.util.MonetarySpannable;

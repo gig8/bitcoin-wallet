@@ -19,9 +19,9 @@ package de.schildbach.wallet.ui;
 
 import javax.annotation.Nullable;
 
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.utils.Fiat;
-import org.bitcoinj.wallet.Wallet;
+import org.motacoinj.core.Coin;
+import org.motacoinj.utils.Fiat;
+import org.motacoinj.wallet.Wallet;
 
 import de.schildbach.wallet.Configuration;
 import de.schildbach.wallet.Constants;
@@ -134,7 +134,7 @@ public final class WalletBalanceFragment extends Fragment {
             viewBalance.setEnabled(false);
         }
 
-        viewBalanceBtc = (CurrencyTextView) view.findViewById(R.id.wallet_balance_btc);
+        viewBalanceBtc = (CurrencyTextView) view.findViewById(R.id.wallet_balance_mota);
         viewBalanceBtc.setPrefixScaleX(0.9f);
 
         viewBalanceWarning = (TextView) view.findViewById(R.id.wallet_balance_warning);

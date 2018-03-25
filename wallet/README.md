@@ -10,7 +10,7 @@ storage:
     Testnet: /data/data/de.schildbach.wallet_test/files/wallet-protobuf-testnet
 
 The wallet file format is not compatible to wallet.dat (Satoshi client). Rather, it uses a custom protobuf format
-which should be compatible between clients using bitcoinj.
+which should be compatible between clients using motacoinj.
 
 Certain actions cause automatic rolling backups of your wallet to app-private storage:
 
@@ -19,8 +19,8 @@ Certain actions cause automatic rolling backups of your wallet to app-private st
 
 Your wallet can be manually backed up to and restored from a share of the storage access framework (likely Google Drive):
 
-    Mainnet: bitcoin-wallet-backup-<yyyy-MM-dd>
-    Testnet: bitcoin-wallet-backup-testnet-<yyyy-MM-dd>
+    Mainnet: motacoin-wallet-backup-<yyyy-MM-dd>
+    Testnet: motacoin-wallet-backup-testnet-<yyyy-MM-dd>
 
 If you want to recover coins from manual backups and for whatever reason you cannot use the app
 itself to restore from the backup, see the separate [README.recover.md](README.recover.md) guide.
@@ -69,14 +69,14 @@ Download and install the required Android dependencies:
 
 Download the [Android NDK](https://developer.android.com/ndk/downloads/), then unpack it to your workspace directory. Point your `ANDROID_NDK_HOME` variable to the unpacked Android NDK directory.
 
-Finally, you can build Bitcoin Wallet and sign it with your development key. Again in your workspace,
+Finally, you can build MotaCoin Wallet and sign it with your development key. Again in your workspace,
 use:
 
     # first time only
-    git clone -b master https://github.com/bitcoin-wallet/bitcoin-wallet.git bitcoin-wallet
+    git clone -b master https://github.com/motacoin-wallet/motacoin-wallet.git motacoin-wallet
 
     # each time
-    cd bitcoin-wallet
+    cd motacoin-wallet
     git pull
     gradle clean :native-scrypt:copy test build
 
@@ -86,7 +86,7 @@ To install the app on your Android device, use:
     sudo apt install android-tools-adb
 
     # each time
-    adb install wallet/build/outputs/apk/bitcoin-wallet-debug.apk
+    adb install wallet/build/outputs/apk/motacoin-wallet-debug.apk
 
 If installation fails, make sure "Developer options" and "USB debugging" are enabled on your Android device, and an ADB
 connection is established.
@@ -103,7 +103,7 @@ wallet file is protected against access from non-root users. In the code reposit
 separate 'prod' branch that gets rebased against master with each released version.
 
     # each time
-    cd bitcoin-wallet
+    cd motacoin-wallet
     git fetch origin
     git checkout origin/prod
     gradle clean :native-scrypt:copy test build
@@ -116,7 +116,7 @@ You should be able to import the project into Android Studio, as it uses Gradle 
 
 ### TRANSLATIONS
 
-The source language is English. Translations for all languages except German [happen on Transifex](https://www.transifex.com/bitcoin-wallet/bitcoin-wallet/).
+The source language is English. Translations for all languages except German [happen on Transifex](https://www.transifex.com/motacoin-wallet/motacoin-wallet/).
 
 The English resources are pushed to Transifex. Changes are pulled and committed to the git
 repository from time to time. It can be done by manually downloading the files, but using the `tx`
@@ -143,7 +143,7 @@ corrected manually.
 
 ### NFC (Near field communication)
 
-Bitcoin Wallet supports reading Bitcoin requests via NFC, either from a passive NFC tag or from
+MotaCoin Wallet supports reading MotaCoin requests via NFC, either from a passive NFC tag or from
 another NFC capable Android device that is requesting coins.
 
 For this to work, just enable NFC in your phone and hold your phone to the tag or device (with
@@ -156,26 +156,26 @@ Instructions for preparing an NFC tag with your address:
 
 - Some tags have less than 50 bytes capacity, those won't work. 1 KB tags recommended.
 
-- The tag needs to contain a Bitcoin URI. You can construct one with the "Request coins" dialog,
+- The tag needs to contain a MotaCoin URI. You can construct one with the "Request coins" dialog,
   then share with messaging or email. You can also construct the URI manually. Mainnet example:
-  `bitcoin:1G2Y2jP5YFZ5RGk2PXaeWwbeA5y1ZtFhoL`
+  `motacoin:1G2Y2jP5YFZ5RGk2PXaeWwbeA5y1ZtFhoL`
 
 - The type of the message needs to be URI or URL (not Text).
 
 - If you put your tag at a public place, don't forget to enable write protect. Otherwise, someone
-  could overwrite the tag with his own Bitcoin address.
+  could overwrite the tag with his own MotaCoin address.
 
 
 ### BITCOINJ
 
-Bitcoin Wallet uses [bitcoinj](https://bitcoinj.github.io/) for Bitcoin specific logic.
+MotaCoin Wallet uses [motacoinj](https://motacoinj.github.io/) for MotaCoin specific logic.
 
 
 ### EXCHANGE RATES
 
-Bitcoin Wallet reads this feed from "BitcoinAverage" for getting exchange rates:
+MotaCoin Wallet reads this feed from "MotaCoinAverage" for getting exchange rates:
 
-    https://apiv2.bitcoinaverage.com/indices/global/ticker/short?crypto=BTC
+    https://apiv2.motacoinaverage.com/indices/global/ticker/short?crypto=MOTA
 
 We chose this feed because it is not dependent on a single exchange. However, you should keep in
 mind it's always a 24h average. This feature can be disabled with the compile-time flag
@@ -185,7 +185,7 @@ mind it's always a 24h average. This feature can be disabled with the compile-ti
 
 ### SWEEPING WALLETS
 
-When sweeping wallets, Bitcoin Wallet uses a set of Electrum servers to query for unspent transaction
+When sweeping wallets, MotaCoin Wallet uses a set of Electrum servers to query for unspent transaction
 outputs (UTXOs). This feature can be disabled with the compile-time flag:
 
     Constants.ENABLE_SWEEP_WALLET

@@ -36,21 +36,21 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.AddressFormatException;
-import org.bitcoinj.core.DumpedPrivateKey;
-import org.bitcoinj.core.ECKey;
-import org.bitcoinj.core.NetworkParameters;
-import org.bitcoinj.core.ScriptException;
-import org.bitcoinj.core.Sha256Hash;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.TransactionInput;
-import org.bitcoinj.core.TransactionOutput;
-import org.bitcoinj.script.Script;
-import org.bitcoinj.wallet.KeyChainGroup;
-import org.bitcoinj.wallet.UnreadableWalletException;
-import org.bitcoinj.wallet.Wallet;
-import org.bitcoinj.wallet.WalletProtobufSerializer;
+import org.motacoinj.core.Address;
+import org.motacoinj.core.AddressFormatException;
+import org.motacoinj.core.DumpedPrivateKey;
+import org.motacoinj.core.ECKey;
+import org.motacoinj.core.NetworkParameters;
+import org.motacoinj.core.ScriptException;
+import org.motacoinj.core.Sha256Hash;
+import org.motacoinj.core.Transaction;
+import org.motacoinj.core.TransactionInput;
+import org.motacoinj.core.TransactionOutput;
+import org.motacoinj.script.Script;
+import org.motacoinj.wallet.KeyChainGroup;
+import org.motacoinj.wallet.UnreadableWalletException;
+import org.motacoinj.wallet.Wallet;
+import org.motacoinj.wallet.WalletProtobufSerializer;
 
 import de.schildbach.wallet.Constants;
 
@@ -200,7 +200,7 @@ public class WalletUtils {
     public static void writeKeys(final Writer out, final List<ECKey> keys) throws IOException {
         final DateFormat format = Iso8601Format.newDateTimeFormatT();
 
-        out.write("# KEEP YOUR PRIVATE KEYS SAFE! Anyone who can read this can spend your Bitcoins.\n");
+        out.write("# KEEP YOUR PRIVATE KEYS SAFE! Anyone who can read this can spend your MotaCoins.\n");
 
         for (final ECKey key : keys) {
             out.write(key.getPrivateKeyEncoded(Constants.NETWORK_PARAMETERS).toBase58());

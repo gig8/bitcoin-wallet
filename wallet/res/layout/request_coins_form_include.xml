@@ -22,13 +22,13 @@
         android:showDividers="middle" >
 
         <de.schildbach.wallet.ui.CurrencyAmountView
-            android:id="@+id/request_coins_amount_btc"
+            android:id="@+id/request_coins_amount_mota"
             android:layout_width="0px"
             android:layout_height="wrap_content"
             android:layout_weight="1" >
 
             <EditText
-                android:id="@+id/request_coins_amount_btc_edittext"
+                android:id="@+id/request_coins_amount_mota_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="flagNoExtractUi"

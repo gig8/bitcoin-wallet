@@ -30,9 +30,9 @@ import java.util.TimeZone;
 
 import javax.annotation.Nullable;
 
-import org.bitcoinj.wallet.Protos;
-import org.bitcoinj.wallet.Wallet;
-import org.bitcoinj.wallet.WalletProtobufSerializer;
+import org.motacoinj.wallet.Protos;
+import org.motacoinj.wallet.Wallet;
+import org.motacoinj.wallet.WalletProtobufSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

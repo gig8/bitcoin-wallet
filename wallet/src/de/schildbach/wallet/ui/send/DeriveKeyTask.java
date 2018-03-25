@@ -20,10 +20,10 @@ package de.schildbach.wallet.ui.send;
 import static android.support.v4.util.Preconditions.checkNotNull;
 import static android.support.v4.util.Preconditions.checkState;
 
-import org.bitcoinj.crypto.KeyCrypter;
-import org.bitcoinj.crypto.KeyCrypterException;
-import org.bitcoinj.crypto.KeyCrypterScrypt;
-import org.bitcoinj.wallet.Wallet;
+import org.motacoinj.crypto.KeyCrypter;
+import org.motacoinj.crypto.KeyCrypterException;
+import org.motacoinj.crypto.KeyCrypterScrypt;
+import org.motacoinj.wallet.Wallet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spongycastle.crypto.params.KeyParameter;
@@ -56,7 +56,7 @@ public abstract class DeriveKeyTask {
         backgroundHandler.post(new Runnable() {
             @Override
             public void run() {
-                org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+                org.motacoinj.core.Context.propagate(Constants.CONTEXT);
 
                 // Key derivation takes time.
                 KeyParameter key = keyCrypter.deriveKey(password);

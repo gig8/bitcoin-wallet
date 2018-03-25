@@ -20,11 +20,11 @@ package de.schildbach.wallet;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-import org.bitcoinj.core.Context;
-import org.bitcoinj.core.NetworkParameters;
-import org.bitcoinj.params.MainNetParams;
-import org.bitcoinj.params.TestNet3Params;
-import org.bitcoinj.utils.MonetaryFormat;
+import org.motacoinj.core.Context;
+import org.motacoinj.core.NetworkParameters;
+import org.motacoinj.params.MainNetParams;
+import org.motacoinj.params.TestNet3Params;
+import org.motacoinj.utils.MonetaryFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -48,7 +48,7 @@ public final class Constants {
     /** Network this wallet is on (e.g. testnet or mainnet). */
     public static final NetworkParameters NETWORK_PARAMETERS = TEST ? TestNet3Params.get() : MainNetParams.get();
 
-    /** Bitcoinj global context. */
+    /** MotaCoinj global context. */
     public static final Context CONTEXT = new Context(NETWORK_PARAMETERS);
 
     /** Enable switch for synching of the blockchain */
@@ -84,10 +84,10 @@ public final class Constants {
                 .getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
         /** Filename of the manual key backup (old format, can only be read). */
-        public static final String EXTERNAL_WALLET_KEY_BACKUP = "bitcoin-wallet-keys" + FILENAME_NETWORK_SUFFIX;
+        public static final String EXTERNAL_WALLET_KEY_BACKUP = "motacoin-wallet-keys" + FILENAME_NETWORK_SUFFIX;
 
         /** Filename of the manual wallet backup. */
-        public static final String EXTERNAL_WALLET_BACKUP = "bitcoin-wallet-backup" + FILENAME_NETWORK_SUFFIX;
+        public static final String EXTERNAL_WALLET_BACKUP = "motacoin-wallet-backup" + FILENAME_NETWORK_SUFFIX;
 
         /** Filename of the block store for storing the chain. */
         public static final String BLOCKCHAIN_FILENAME = "blockchain" + FILENAME_NETWORK_SUFFIX;
@@ -107,7 +107,7 @@ public final class Constants {
 
     /** Currency code for the wallet name resolver. */
     public static final String WALLET_NAME_CURRENCY_CODE = NETWORK_PARAMETERS.getId()
-            .equals(NetworkParameters.ID_MAINNET) ? "btc" : "tbtc";
+            .equals(NetworkParameters.ID_MAINNET) ? "mota" : "tmota";
 
     /** URL to fetch version alerts from. */
     public static final HttpUrl VERSION_URL = HttpUrl.parse("https://wallet.schildbach.de/version");
@@ -115,16 +115,16 @@ public final class Constants {
     public static final HttpUrl DYNAMIC_FEES_URL = HttpUrl.parse("https://wallet.schildbach.de/fees");
 
     /** MIME type used for transmitting single transactions. */
-    public static final String MIMETYPE_TRANSACTION = "application/x-btctx";
+    public static final String MIMETYPE_TRANSACTION = "application/x-motatx";
 
     /** MIME type used for transmitting wallet backups. */
-    public static final String MIMETYPE_WALLET_BACKUP = "application/x-bitcoin-wallet-backup";
+    public static final String MIMETYPE_WALLET_BACKUP = "application/x-motacoin-wallet-backup";
 
     /** Number of confirmations until a transaction is fully confirmed. */
     public static final int MAX_NUM_CONFIRMATIONS = 7;
 
     /** User-agent to use for network access. */
-    public static final String USER_AGENT = "Bitcoin Wallet";
+    public static final String USER_AGENT = "MotaCoin Wallet";
 
     /** Default currency to use if all default mechanisms fail. */
     public static final String DEFAULT_EXCHANGE_CURRENCY = "USD";
@@ -134,7 +134,7 @@ public final class Constants {
             ? "18fZZuwoPCpQWHiS9tM2rQenmoFSUqJYvt" : null;
 
     /** Recipient e-mail address for reports. */
-    public static final String REPORT_EMAIL = "bitcoin.wallet.developers@gmail.com";
+    public static final String REPORT_EMAIL = "motacoin.wallet.developers@gmail.com";
 
     /** Subject line for manually reported issues. */
     public static final String REPORT_SUBJECT_ISSUE = "Reported issue";
@@ -156,8 +156,8 @@ public final class Constants {
 
     public static final BaseEncoding HEX = BaseEncoding.base16().lowerCase();
 
-    public static final String SOURCE_URL = "https://github.com/bitcoin-wallet/bitcoin-wallet";
-    public static final String BINARY_URL = "https://github.com/bitcoin-wallet/bitcoin-wallet/releases";
+    public static final String SOURCE_URL = "https://github.com/motacoin-wallet/motacoin-wallet";
+    public static final String BINARY_URL = "https://github.com/motacoin-wallet/motacoin-wallet/releases";
     public static final String MARKET_APP_URL = "market://details?id=%s";
     public static final String WEBMARKET_APP_URL = "https://play.google.com/store/apps/details?id=%s";
 

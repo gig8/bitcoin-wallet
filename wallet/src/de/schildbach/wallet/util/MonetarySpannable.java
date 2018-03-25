@@ -23,8 +23,8 @@ import java.util.regex.Matcher;
 
 import javax.annotation.Nullable;
 
-import org.bitcoinj.core.Monetary;
-import org.bitcoinj.utils.MonetaryFormat;
+import org.motacoinj.core.Monetary;
+import org.motacoinj.utils.MonetaryFormat;
 
 import de.schildbach.wallet.Constants;
 

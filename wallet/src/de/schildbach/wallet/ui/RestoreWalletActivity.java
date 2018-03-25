@@ -24,8 +24,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
-import org.bitcoinj.wallet.Wallet;
-import org.bitcoinj.wallet.Wallet.BalanceType;
+import org.motacoinj.wallet.Wallet;
+import org.motacoinj.wallet.Wallet.BalanceType;
 
 import de.schildbach.wallet.Configuration;
 import de.schildbach.wallet.Constants;

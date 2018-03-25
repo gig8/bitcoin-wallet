@@ -26,39 +26,39 @@ import android.widget.Toast;
 /**
  * @author Andreas Schildbach
  */
-public final class BitcoinIntegration {
+public final class MotaCoinIntegration {
     private static final String INTENT_EXTRA_PAYMENTREQUEST = "paymentrequest";
     private static final String INTENT_EXTRA_PAYMENT = "payment";
     private static final String INTENT_EXTRA_TRANSACTION_HASH = "transaction_hash";
 
-    private static final String MIMETYPE_PAYMENTREQUEST = "application/bitcoin-paymentrequest"; // BIP 71
+    private static final String MIMETYPE_PAYMENTREQUEST = "application/motacoin-paymentrequest"; // BIP 71
 
     /**
-     * Request any amount of Bitcoins (probably a donation) from user, without feedback from the app.
+     * Request any amount of MotaCoins (probably a donation) from user, without feedback from the app.
      * 
      * @param context
      *            Android context
      * @param address
-     *            Bitcoin address
+     *            MotaCoin address
      */
     public static void request(final Context context, final String address) {
-        final Intent intent = makeBitcoinUriIntent(address, null);
+        final Intent intent = makeMotaCoinUriIntent(address, null);
 
         start(context, intent);
     }
 
     /**
-     * Request specific amount of Bitcoins from user, without feedback from the app.
+     * Request specific amount of MotaCoins from user, without feedback from the app.
      * 
      * @param context
      *            Android context
      * @param address
-     *            Bitcoin address
+     *            MotaCoin address
      * @param amount
-     *            Bitcoin amount in satoshis
+     *            MotaCoin amount in satoshis
      */
     public static void request(final Context context, final String address, final long amount) {
-        final Intent intent = makeBitcoinUriIntent(address, amount);
+        final Intent intent = makeMotaCoinUriIntent(address, amount);
 
         start(context, intent);
     }
@@ -78,12 +78,12 @@ public final class BitcoinIntegration {
     }
 
     /**
-     * Request any amount of Bitcoins (probably a donation) from user, with feedback from the app. Result
+     * Request any amount of MotaCoins (probably a donation) from user, with feedback from the app. Result
      * intent can be received by overriding {@link android.app.Activity#onActivityResult()}. Result indicates
      * either {@link Activity#RESULT_OK} or {@link Activity#RESULT_CANCELED}. In the success case, use
      * {@link #transactionHashFromResult(Intent)} to read the transaction hash from the intent.
      * 
-     * Warning: A success indication is no guarantee! To be on the safe side, you must drive your own Bitcoin
+     * Warning: A success indication is no guarantee! To be on the safe side, you must drive your own MotaCoin
      * infrastructure and validate the transaction.
      * 
      * @param activity
@@ -92,21 +92,21 @@ public final class BitcoinIntegration {
      *            Code identifying the call when {@link android.app.Activity#onActivityResult()} is called
      *            back
      * @param address
-     *            Bitcoin address
+     *            MotaCoin address
      */
     public static void requestForResult(final Activity activity, final int requestCode, final String address) {
-        final Intent intent = makeBitcoinUriIntent(address, null);
+        final Intent intent = makeMotaCoinUriIntent(address, null);
 
         startForResult(activity, requestCode, intent);
     }
 
     /**
-     * Request specific amount of Bitcoins from user, with feedback from the app. Result intent can be
+     * Request specific amount of MotaCoins from user, with feedback from the app. Result intent can be
      * received by overriding {@link android.app.Activity#onActivityResult()}. Result indicates either
      * {@link Activity#RESULT_OK} or {@link Activity#RESULT_CANCELED}. In the success case, use
      * {@link #transactionHashFromResult(Intent)} to read the transaction hash from the intent.
      * 
-     * Warning: A success indication is no guarantee! To be on the safe side, you must drive your own Bitcoin
+     * Warning: A success indication is no guarantee! To be on the safe side, you must drive your own MotaCoin
      * infrastructure and validate the transaction.
      * 
      * @param activity
@@ -115,11 +115,11 @@ public final class BitcoinIntegration {
      *            Code identifying the call when {@link android.app.Activity#onActivityResult()} is called
      *            back
      * @param address
-     *            Bitcoin address
+     *            MotaCoin address
      */
     public static void requestForResult(final Activity activity, final int requestCode, final String address,
             final long amount) {
-        final Intent intent = makeBitcoinUriIntent(address, amount);
+        final Intent intent = makeMotaCoinUriIntent(address, amount);
 
         startForResult(activity, requestCode, intent);
     }
@@ -130,7 +130,7 @@ public final class BitcoinIntegration {
      * {@link Activity#RESULT_CANCELED}. In the success case, use {@link #transactionHashFromResult(Intent)}
      * to read the transaction hash from the intent.
      * 
-     * Warning: A success indication is no guarantee! To be on the safe side, you must drive your own Bitcoin
+     * Warning: A success indication is no guarantee! To be on the safe side, you must drive your own MotaCoin
      * infrastructure and validate the transaction.
      * 
      * @param activity
@@ -161,7 +161,7 @@ public final class BitcoinIntegration {
     }
 
     /**
-     * Put BIP70 payment message into result intent. Meant for usage by Bitcoin wallet applications.
+     * Put BIP70 payment message into result intent. Meant for usage by MotaCoin wallet applications.
      * 
      * @param result
      *            result intent
@@ -173,11 +173,11 @@ public final class BitcoinIntegration {
     }
 
     /**
-     * Get BIP70 payment message from result intent. Meant for usage by applications initiating a Bitcoin
+     * Get BIP70 payment message from result intent. Meant for usage by applications initiating a MotaCoin
      * payment.
      * 
      * You can use the transactions contained in the payment to validate the payment. For this, you need your
-     * own Bitcoin infrastructure though. There is no guarantee that the payment will ever confirm.
+     * own MotaCoin infrastructure though. There is no guarantee that the payment will ever confirm.
      * 
      * @param result
      *            result intent
@@ -190,7 +190,7 @@ public final class BitcoinIntegration {
     }
 
     /**
-     * Put transaction hash into result intent. Meant for usage by Bitcoin wallet applications.
+     * Put transaction hash into result intent. Meant for usage by MotaCoin wallet applications.
      * 
      * @param result
      *            result intent
@@ -202,11 +202,11 @@ public final class BitcoinIntegration {
     }
 
     /**
-     * Get transaction hash from result intent. Meant for usage by applications initiating a Bitcoin payment.
+     * Get transaction hash from result intent. Meant for usage by applications initiating a MotaCoin payment.
      * 
-     * You can use this hash to request the transaction from the Bitcoin network, in order to validate. For
-     * this, you need your own Bitcoin infrastructure though. There is no guarantee that the transaction has
-     * ever been broadcasted to the Bitcoin network.
+     * You can use this hash to request the transaction from the MotaCoin network, in order to validate. For
+     * this, you need your own MotaCoin infrastructure though. There is no guarantee that the transaction has
+     * ever been broadcasted to the MotaCoin network.
      * 
      * @param result
      *            result intent
@@ -220,8 +220,8 @@ public final class BitcoinIntegration {
 
     private static final int SATOSHIS_PER_COIN = 100000000;
 
-    private static Intent makeBitcoinUriIntent(final String address, final Long amount) {
-        final StringBuilder uri = new StringBuilder("bitcoin:");
+    private static Intent makeMotaCoinUriIntent(final String address, final Long amount) {
+        final StringBuilder uri = new StringBuilder("motacoin:");
         if (address != null)
             uri.append(address);
         if (amount != null)
@@ -258,13 +258,13 @@ public final class BitcoinIntegration {
     }
 
     private static void redirectToDownload(final Context context) {
-        Toast.makeText(context, "No Bitcoin application found.\nPlease install Bitcoin Wallet.", Toast.LENGTH_LONG)
+        Toast.makeText(context, "No MotaCoin application found.\nPlease install MotaCoin Wallet.", Toast.LENGTH_LONG)
                 .show();
 
         final Intent marketIntent = new Intent(Intent.ACTION_VIEW,
                 Uri.parse("market://details?id=de.schildbach.wallet"));
         final Intent binaryIntent = new Intent(Intent.ACTION_VIEW,
-                Uri.parse("https://github.com/bitcoin-wallet/bitcoin-wallet/releases"));
+                Uri.parse("https://github.com/motacoin-wallet/motacoin-wallet/releases"));
 
         final PackageManager pm = context.getPackageManager();
         if (pm.resolveActivity(marketIntent, 0) != null)

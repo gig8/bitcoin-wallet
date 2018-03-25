@@ -19,8 +19,8 @@ package de.schildbach.wallet.ui;
 
 import javax.annotation.Nullable;
 
-import org.bitcoinj.core.Address;
-import org.bitcoinj.uri.BitcoinURI;
+import org.motacoinj.core.Address;
+import org.motacoinj.uri.MotaCoinURI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -89,7 +89,7 @@ public class WalletAddressDialogFragment extends DialogFragment {
         dialog.setContentView(R.layout.wallet_address_dialog);
         dialog.setCanceledOnTouchOutside(true);
 
-        final String uri = BitcoinURI.convertToBitcoinURI(address, null, addressLabel, null);
+        final String uri = MotaCoinURI.convertToMotaCoinURI(address, null, addressLabel, null);
         final BitmapDrawable bitmap = new BitmapDrawable(getResources(), Qr.bitmap(uri));
         bitmap.setFilterBitmap(false);
         final ImageView imageView = (ImageView) dialog.findViewById(R.id.wallet_address_dialog_image);

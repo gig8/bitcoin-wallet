@@ -36,9 +36,9 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.TimeZone;
 
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.TransactionOutput;
-import org.bitcoinj.wallet.Wallet;
+import org.motacoinj.core.Transaction;
+import org.motacoinj.core.TransactionOutput;
+import org.motacoinj.wallet.Wallet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

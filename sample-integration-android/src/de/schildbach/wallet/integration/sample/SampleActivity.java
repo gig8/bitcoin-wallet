@@ -16,11 +16,11 @@
 
 package de.schildbach.wallet.integration.sample;
 
-import org.bitcoin.protocols.payments.Protos;
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.AddressFormatException;
-import org.bitcoinj.core.NetworkParameters;
-import org.bitcoinj.script.ScriptBuilder;
+import org.motacoin.protocols.payments.Protos;
+import org.motacoinj.core.Address;
+import org.motacoinj.core.AddressFormatException;
+import org.motacoinj.core.NetworkParameters;
+import org.motacoinj.script.ScriptBuilder;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -37,7 +37,7 @@ import android.widget.Toast;
 
 import com.google.protobuf.ByteString;
 
-import de.schildbach.wallet.integration.android.BitcoinIntegration;
+import de.schildbach.wallet.integration.android.MotaCoinIntegration;
 
 /**
  * @author Andreas Schildbach
@@ -86,7 +86,7 @@ public class SampleActivity extends Activity {
     private void handleDonate() {
         final String[] addresses = donationAddresses();
 
-        BitcoinIntegration.requestForResult(SampleActivity.this, REQUEST_CODE, addresses[0]);
+        MotaCoinIntegration.requestForResult(SampleActivity.this, REQUEST_CODE, addresses[0]);
     }
 
     private void handleRequest() {
@@ -114,7 +114,7 @@ public class SampleActivity extends Activity {
             final Protos.PaymentRequest.Builder paymentRequest = Protos.PaymentRequest.newBuilder();
             paymentRequest.setSerializedPaymentDetails(paymentDetails.build().toByteString());
 
-            BitcoinIntegration.requestForResult(SampleActivity.this, REQUEST_CODE,
+            MotaCoinIntegration.requestForResult(SampleActivity.this, REQUEST_CODE,
                     paymentRequest.build().toByteArray());
         } catch (final AddressFormatException x) {
             throw new RuntimeException(x);
@@ -125,14 +125,14 @@ public class SampleActivity extends Activity {
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         if (requestCode == REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
-                final String txHash = BitcoinIntegration.transactionHashFromResult(data);
+                final String txHash = MotaCoinIntegration.transactionHashFromResult(data);
                 if (txHash != null) {
                     final SpannableStringBuilder messageBuilder = new SpannableStringBuilder("Transaction hash:\n");
                     messageBuilder.append(txHash);
                     messageBuilder.setSpan(new TypefaceSpan("monospace"), messageBuilder.length() - txHash.length(),
                             messageBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-                    if (BitcoinIntegration.paymentFromResult(data) != null)
+                    if (MotaCoinIntegration.paymentFromResult(data) != null)
                         messageBuilder.append("\n(also a BIP70 payment message was received)");
 
                     donateMessage.setText(messageBuilder);

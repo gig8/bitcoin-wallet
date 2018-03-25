@@ -26,9 +26,9 @@ import java.util.TreeMap;
 
 import javax.annotation.Nullable;
 
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.utils.Fiat;
-import org.bitcoinj.utils.MonetaryFormat;
+import org.motacoinj.core.Coin;
+import org.motacoinj.utils.Fiat;
+import org.motacoinj.utils.MonetaryFormat;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,8 +75,8 @@ public class ExchangeRatesProvider extends ContentProvider {
     private long lastUpdated = 0;
 
     private static final HttpUrl BITCOINAVERAGE_URL = HttpUrl
-            .parse("https://apiv2.bitcoinaverage.com/indices/global/ticker/short?crypto=BTC");
-    private static final String BITCOINAVERAGE_SOURCE = "BitcoinAverage.com";
+            .parse("https://apiv2.motacoinaverage.com/indices/global/ticker/short?crypto=MOTA");
+    private static final String BITCOINAVERAGE_SOURCE = "MotaCoinAverage.com";
 
     private static final long UPDATE_FREQ_MS = 10 * DateUtils.MINUTE_IN_MILLIS;
 
@@ -139,7 +139,7 @@ public class ExchangeRatesProvider extends ContentProvider {
         if (selection == null) {
             for (final Map.Entry<String, ExchangeRate> entry : exchangeRates.entrySet()) {
                 final ExchangeRate exchangeRate = entry.getValue();
-                final org.bitcoinj.utils.ExchangeRate rate = exchangeRate.rate;
+                final org.motacoinj.utils.ExchangeRate rate = exchangeRate.rate;
                 final String currencyCode = exchangeRate.getCurrencyCode();
                 cursor.newRow().add(currencyCode.hashCode()).add(currencyCode).add(rate.coin.value).add(rate.fiat.value)
                         .add(exchangeRate.source);
@@ -148,7 +148,7 @@ public class ExchangeRatesProvider extends ContentProvider {
             final String selectionArg = selectionArgs[0].toLowerCase(Locale.US);
             for (final Map.Entry<String, ExchangeRate> entry : exchangeRates.entrySet()) {
                 final ExchangeRate exchangeRate = entry.getValue();
-                final org.bitcoinj.utils.ExchangeRate rate = exchangeRate.rate;
+                final org.motacoinj.utils.ExchangeRate rate = exchangeRate.rate;
                 final String currencyCode = exchangeRate.getCurrencyCode();
                 final String currencySymbol = GenericUtils.currencySymbol(currencyCode);
                 if (currencyCode.toLowerCase(Locale.US).contains(selectionArg)
@@ -160,7 +160,7 @@ public class ExchangeRatesProvider extends ContentProvider {
             final String selectionArg = selectionArgs[0];
             final ExchangeRate exchangeRate = bestExchangeRate(selectionArg);
             if (exchangeRate != null) {
-                final org.bitcoinj.utils.ExchangeRate rate = exchangeRate.rate;
+                final org.motacoinj.utils.ExchangeRate rate = exchangeRate.rate;
                 final String currencyCode = exchangeRate.getCurrencyCode();
                 cursor.newRow().add(currencyCode.hashCode()).add(currencyCode).add(rate.coin.value).add(rate.fiat.value)
                         .add(exchangeRate.source);
@@ -201,7 +201,7 @@ public class ExchangeRatesProvider extends ContentProvider {
                 cursor.getLong(cursor.getColumnIndexOrThrow(ExchangeRatesProvider.KEY_RATE_FIAT)));
         final String source = cursor.getString(cursor.getColumnIndexOrThrow(ExchangeRatesProvider.KEY_SOURCE));
 
-        return new ExchangeRate(new org.bitcoinj.utils.ExchangeRate(rateCoin, rateFiat), source);
+        return new ExchangeRate(new org.motacoinj.utils.ExchangeRate(rateCoin, rateFiat), source);
     }
 
     @Override
@@ -241,18 +241,18 @@ public class ExchangeRatesProvider extends ContentProvider {
 
                 for (final Iterator<String> i = head.keys(); i.hasNext();) {
                     final String currencyCode = i.next();
-                    if (currencyCode.startsWith("BTC")) {
+                    if (currencyCode.startsWith("MOTA")) {
                         final String fiatCurrencyCode = currencyCode.substring(3);
-                        if (!fiatCurrencyCode.equals(MonetaryFormat.CODE_BTC)
-                                && !fiatCurrencyCode.equals(MonetaryFormat.CODE_MBTC)
-                                && !fiatCurrencyCode.equals(MonetaryFormat.CODE_UBTC)) {
+                        if (!fiatCurrencyCode.equals(MonetaryFormat.CODE_MOTA)
+                                && !fiatCurrencyCode.equals(MonetaryFormat.CODE_MMOTA)
+                                && !fiatCurrencyCode.equals(MonetaryFormat.CODE_UMOTA)) {
                             final JSONObject exchangeRate = head.getJSONObject(currencyCode);
                             final JSONObject averages = exchangeRate.getJSONObject("averages");
                             try {
                                 final Fiat rate = parseFiatInexact(fiatCurrencyCode, averages.getString("day"));
                                 if (rate.signum() > 0)
                                     rates.put(fiatCurrencyCode, new ExchangeRate(
-                                            new org.bitcoinj.utils.ExchangeRate(rate), BITCOINAVERAGE_SOURCE));
+                                            new org.motacoinj.utils.ExchangeRate(rate), BITCOINAVERAGE_SOURCE));
                             } catch (final IllegalArgumentException x) {
                                 log.warn("problem fetching {} exchange rate from {}: {}", currencyCode,
                                         BITCOINAVERAGE_URL, x.getMessage());
@@ -276,7 +276,7 @@ public class ExchangeRatesProvider extends ContentProvider {
         return null;
     }
 
-    // backport from bitcoinj 0.15
+    // backport from motacoinj 0.15
     private static Fiat parseFiatInexact(final String currencyCode, final String str) {
         final long val = new BigDecimal(str).movePointRight(Fiat.SMALLEST_UNIT_EXPONENT).longValue();
         return Fiat.valueOf(currencyCode, val);

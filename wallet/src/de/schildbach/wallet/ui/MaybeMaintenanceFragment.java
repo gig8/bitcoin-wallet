@@ -19,9 +19,9 @@ package de.schildbach.wallet.ui;
 
 import java.util.List;
 
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.wallet.DeterministicUpgradeRequiresPassword;
-import org.bitcoinj.wallet.Wallet;
+import org.motacoinj.core.Transaction;
+import org.motacoinj.wallet.DeterministicUpgradeRequiresPassword;
+import org.motacoinj.wallet.Wallet;
 
 import com.google.common.util.concurrent.ListenableFuture;
 

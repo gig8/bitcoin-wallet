@@ -35,31 +35,31 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import javax.annotation.Nullable;
 
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.Block;
-import org.bitcoinj.core.BlockChain;
-import org.bitcoinj.core.CheckpointManager;
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.core.FilteredBlock;
-import org.bitcoinj.core.Peer;
-import org.bitcoinj.core.PeerGroup;
-import org.bitcoinj.core.Sha256Hash;
-import org.bitcoinj.core.StoredBlock;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.TransactionConfidence.ConfidenceType;
-import org.bitcoinj.core.listeners.AbstractPeerDataEventListener;
-import org.bitcoinj.core.listeners.PeerConnectedEventListener;
-import org.bitcoinj.core.listeners.PeerDataEventListener;
-import org.bitcoinj.core.listeners.PeerDisconnectedEventListener;
-import org.bitcoinj.net.discovery.MultiplexingDiscovery;
-import org.bitcoinj.net.discovery.PeerDiscovery;
-import org.bitcoinj.net.discovery.PeerDiscoveryException;
-import org.bitcoinj.store.BlockStore;
-import org.bitcoinj.store.BlockStoreException;
-import org.bitcoinj.store.SPVBlockStore;
-import org.bitcoinj.utils.MonetaryFormat;
-import org.bitcoinj.utils.Threading;
-import org.bitcoinj.wallet.Wallet;
+import org.motacoinj.core.Address;
+import org.motacoinj.core.Block;
+import org.motacoinj.core.BlockChain;
+import org.motacoinj.core.CheckpointManager;
+import org.motacoinj.core.Coin;
+import org.motacoinj.core.FilteredBlock;
+import org.motacoinj.core.Peer;
+import org.motacoinj.core.PeerGroup;
+import org.motacoinj.core.Sha256Hash;
+import org.motacoinj.core.StoredBlock;
+import org.motacoinj.core.Transaction;
+import org.motacoinj.core.TransactionConfidence.ConfidenceType;
+import org.motacoinj.core.listeners.AbstractPeerDataEventListener;
+import org.motacoinj.core.listeners.PeerConnectedEventListener;
+import org.motacoinj.core.listeners.PeerDataEventListener;
+import org.motacoinj.core.listeners.PeerDisconnectedEventListener;
+import org.motacoinj.net.discovery.MultiplexingDiscovery;
+import org.motacoinj.net.discovery.PeerDiscovery;
+import org.motacoinj.net.discovery.PeerDiscoveryException;
+import org.motacoinj.store.BlockStore;
+import org.motacoinj.store.BlockStoreException;
+import org.motacoinj.store.SPVBlockStore;
+import org.motacoinj.utils.MonetaryFormat;
+import org.motacoinj.utils.Threading;
+import org.motacoinj.wallet.Wallet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -222,7 +222,7 @@ public class BlockchainService extends Service {
         if (address != null && !notificationAddresses.contains(address))
             notificationAddresses.add(address);
 
-        final MonetaryFormat btcFormat = config.getFormat();
+        final MonetaryFormat motaFormat = config.getFormat();
         final String packageFlavor = application.applicationPackageFlavor();
         final String msgSuffix = packageFlavor != null ? " [" + packageFlavor + "]" : "";
 
@@ -235,7 +235,7 @@ public class BlockchainService extends Service {
         summaryNotification.setWhen(System.currentTimeMillis());
         summaryNotification.setSmallIcon(R.drawable.stat_notify_received_24dp);
         summaryNotification.setContentTitle(
-                getString(R.string.notification_coins_received_msg, btcFormat.format(notificationAccumulatedAmount))
+                getString(R.string.notification_coins_received_msg, motaFormat.format(notificationAccumulatedAmount))
                         + msgSuffix);
         if (!notificationAddresses.isEmpty()) {
             final StringBuilder text = new StringBuilder();
@@ -259,7 +259,7 @@ public class BlockchainService extends Service {
         childNotification.setGroupAlertBehavior(NotificationCompat.GROUP_ALERT_CHILDREN);
         childNotification.setWhen(System.currentTimeMillis());
         childNotification.setSmallIcon(R.drawable.stat_notify_received_24dp);
-        final String msg = getString(R.string.notification_coins_received_msg, btcFormat.format(amount)) + msgSuffix;
+        final String msg = getString(R.string.notification_coins_received_msg, motaFormat.format(amount)) + msgSuffix;
         childNotification.setTicker(msg);
         childNotification.setContentTitle(msg);
         if (address != null) {

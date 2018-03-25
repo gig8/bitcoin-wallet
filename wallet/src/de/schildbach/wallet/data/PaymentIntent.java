@@ -23,17 +23,17 @@ import java.util.Arrays;
 
 import javax.annotation.Nullable;
 
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.AddressFormatException;
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.core.ScriptException;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.protocols.payments.PaymentProtocol;
-import org.bitcoinj.protocols.payments.PaymentProtocolException;
-import org.bitcoinj.script.Script;
-import org.bitcoinj.script.ScriptBuilder;
-import org.bitcoinj.uri.BitcoinURI;
-import org.bitcoinj.wallet.SendRequest;
+import org.motacoinj.core.Address;
+import org.motacoinj.core.AddressFormatException;
+import org.motacoinj.core.Coin;
+import org.motacoinj.core.ScriptException;
+import org.motacoinj.core.Transaction;
+import org.motacoinj.protocols.payments.PaymentProtocol;
+import org.motacoinj.protocols.payments.PaymentProtocolException;
+import org.motacoinj.script.Script;
+import org.motacoinj.script.ScriptBuilder;
+import org.motacoinj.uri.MotaCoinURI;
+import org.motacoinj.wallet.SendRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -203,15 +203,15 @@ public final class PaymentIntent implements Parcelable {
                 null, null, null);
     }
 
-    public static PaymentIntent fromBitcoinUri(final BitcoinURI bitcoinUri) {
-        final Address address = bitcoinUri.getAddress();
-        final Output[] outputs = address != null ? buildSimplePayTo(bitcoinUri.getAmount(), address) : null;
-        final String bluetoothMac = (String) bitcoinUri.getParameterByName(Bluetooth.MAC_URI_PARAM);
-        final String paymentRequestHashStr = (String) bitcoinUri.getParameterByName("h");
+    public static PaymentIntent fromMotaCoinUri(final MotaCoinURI motacoinUri) {
+        final Address address = motacoinUri.getAddress();
+        final Output[] outputs = address != null ? buildSimplePayTo(motacoinUri.getAmount(), address) : null;
+        final String bluetoothMac = (String) motacoinUri.getParameterByName(Bluetooth.MAC_URI_PARAM);
+        final String paymentRequestHashStr = (String) motacoinUri.getParameterByName("h");
         final byte[] paymentRequestHash = paymentRequestHashStr != null ? base64UrlDecode(paymentRequestHashStr) : null;
 
-        return new PaymentIntent(PaymentIntent.Standard.BIP21, null, null, outputs, bitcoinUri.getLabel(),
-                bluetoothMac != null ? "bt:" + bluetoothMac : null, null, bitcoinUri.getPaymentRequestUrl(),
+        return new PaymentIntent(PaymentIntent.Standard.BIP21, null, null, outputs, motacoinUri.getLabel(),
+                bluetoothMac != null ? "bt:" + bluetoothMac : null, null, motacoinUri.getPaymentRequestUrl(),
                 paymentRequestHash);
     }
 

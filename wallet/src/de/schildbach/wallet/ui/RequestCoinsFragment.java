@@ -21,11 +21,11 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import javax.annotation.Nullable;
 
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.protocols.payments.PaymentProtocol;
-import org.bitcoinj.uri.BitcoinURI;
-import org.bitcoinj.wallet.Wallet;
+import org.motacoinj.core.Address;
+import org.motacoinj.core.Coin;
+import org.motacoinj.protocols.payments.PaymentProtocol;
+import org.motacoinj.uri.MotaCoinURI;
+import org.motacoinj.wallet.Wallet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -186,16 +186,16 @@ public final class RequestCoinsFragment extends Fragment implements NfcAdapter.C
             }
         });
 
-        final CurrencyAmountView btcAmountView = (CurrencyAmountView) view.findViewById(R.id.request_coins_amount_btc);
-        btcAmountView.setCurrencySymbol(config.getFormat().code());
-        btcAmountView.setInputFormat(config.getMaxPrecisionFormat());
-        btcAmountView.setHintFormat(config.getFormat());
+        final CurrencyAmountView motaAmountView = (CurrencyAmountView) view.findViewById(R.id.request_coins_amount_mota);
+        motaAmountView.setCurrencySymbol(config.getFormat().code());
+        motaAmountView.setInputFormat(config.getMaxPrecisionFormat());
+        motaAmountView.setHintFormat(config.getFormat());
 
         final CurrencyAmountView localAmountView = (CurrencyAmountView) view
                 .findViewById(R.id.request_coins_amount_local);
         localAmountView.setInputFormat(Constants.LOCAL_FORMAT);
         localAmountView.setHintFormat(Constants.LOCAL_FORMAT);
-        amountCalculatorLink = new CurrencyCalculatorLink(btcAmountView, localAmountView);
+        amountCalculatorLink = new CurrencyCalculatorLink(motaAmountView, localAmountView);
 
         acceptBluetoothPaymentView = (CheckBox) view.findViewById(R.id.request_coins_accept_bluetooth_payment);
         acceptBluetoothPaymentView.setVisibility(bluetoothAdapter != null ? View.VISIBLE : View.GONE);
@@ -348,14 +348,14 @@ public final class RequestCoinsFragment extends Fragment implements NfcAdapter.C
     }
 
     private void handleCopy() {
-        final Uri request = Uri.parse(determineBitcoinRequestStr(false));
-        clipboardManager.setPrimaryClip(ClipData.newRawUri("Bitcoin payment request", request));
+        final Uri request = Uri.parse(determineMotaCoinRequestStr(false));
+        clipboardManager.setPrimaryClip(ClipData.newRawUri("MotaCoin payment request", request));
         log.info("payment request copied to clipboard: {}", request);
         new Toast(activity).toast(R.string.request_coins_clipboard_msg);
     }
 
     private void handleShare() {
-        final String request = determineBitcoinRequestStr(false);
+        final String request = determineMotaCoinRequestStr(false);
         final ShareCompat.IntentBuilder builder = ShareCompat.IntentBuilder.from(activity);
         builder.setType("text/plain");
         builder.setText(request);
@@ -367,7 +367,7 @@ public final class RequestCoinsFragment extends Fragment implements NfcAdapter.C
     private void handleLocalApp() {
         final ComponentName component = new ComponentName(activity, SendCoinsActivity.class);
         final PackageManager pm = activity.getPackageManager();
-        final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(determineBitcoinRequestStr(false)));
+        final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(determineMotaCoinRequestStr(false)));
 
         try {
             // launch intent chooser with ourselves excluded
@@ -388,11 +388,11 @@ public final class RequestCoinsFragment extends Fragment implements NfcAdapter.C
         if (!isResumed())
             return;
 
-        final String bitcoinRequest = determineBitcoinRequestStr(true);
+        final String motacoinRequest = determineMotaCoinRequestStr(true);
         final byte[] paymentRequest = determinePaymentRequest(true);
 
         // update qr-code
-        qrCodeBitmap = new BitmapDrawable(getResources(), Qr.bitmap(bitcoinRequest));
+        qrCodeBitmap = new BitmapDrawable(getResources(), Qr.bitmap(motacoinRequest));
         qrCodeBitmap.setFilterBitmap(false);
         qrView.setImageDrawable(qrCodeBitmap);
 
@@ -410,11 +410,11 @@ public final class RequestCoinsFragment extends Fragment implements NfcAdapter.C
         paymentRequestRef.set(paymentRequest);
     }
 
-    private String determineBitcoinRequestStr(final boolean includeBluetoothMac) {
+    private String determineMotaCoinRequestStr(final boolean includeBluetoothMac) {
         final Coin amount = amountCalculatorLink.getAmount();
         final String ownName = config.getOwnName();
 
-        final StringBuilder uri = new StringBuilder(BitcoinURI.convertToBitcoinURI(address, amount, ownName, null));
+        final StringBuilder uri = new StringBuilder(MotaCoinURI.convertToMotaCoinURI(address, amount, ownName, null));
         if (includeBluetoothMac && bluetoothMac != null) {
             uri.append(amount == null && ownName == null ? '?' : '&');
             uri.append(Bluetooth.MAC_URI_PARAM).append('=').append(bluetoothMac);

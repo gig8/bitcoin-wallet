@@ -17,9 +17,9 @@
 
 package de.schildbach.wallet;
 
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.utils.Fiat;
-import org.bitcoinj.utils.MonetaryFormat;
+import org.motacoinj.core.Coin;
+import org.motacoinj.utils.Fiat;
+import org.motacoinj.utils.MonetaryFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,7 +44,7 @@ public class Configuration {
     private final SharedPreferences prefs;
     private final Resources res;
 
-    public static final String PREFS_KEY_BTC_PRECISION = "btc_precision";
+    public static final String PREFS_KEY_MOTA_PRECISION = "mota_precision";
     public static final String PREFS_KEY_OWN_NAME = "own_name";
     public static final String PREFS_KEY_SEND_COINS_AUTOCLOSE = "send_coins_autoclose";
     public static final String PREFS_KEY_CONNECTIVITY_NOTIFICATION = "connectivity_notification";
@@ -68,8 +68,8 @@ public class Configuration {
     private static final String PREFS_KEY_LAST_BACKUP = "last_backup";
     private static final String PREFS_KEY_LAST_BLUETOOTH_ADDRESS = "last_bluetooth_address";
 
-    private static final int PREFS_DEFAULT_BTC_SHIFT = 3;
-    private static final int PREFS_DEFAULT_BTC_PRECISION = 2;
+    private static final int PREFS_DEFAULT_MOTA_SHIFT = 3;
+    private static final int PREFS_DEFAULT_MOTA_PRECISION = 2;
 
     private static final Logger log = LoggerFactory.getLogger(Configuration.class);
 
@@ -81,19 +81,19 @@ public class Configuration {
     }
 
     private int getBtcPrecision() {
-        final String precision = prefs.getString(PREFS_KEY_BTC_PRECISION, null);
+        final String precision = prefs.getString(PREFS_KEY_MOTA_PRECISION, null);
         if (precision != null)
             return precision.charAt(0) - '0';
         else
-            return PREFS_DEFAULT_BTC_PRECISION;
+            return PREFS_DEFAULT_MOTA_PRECISION;
     }
 
     public int getBtcShift() {
-        final String precision = prefs.getString(PREFS_KEY_BTC_PRECISION, null);
+        final String precision = prefs.getString(PREFS_KEY_MOTA_PRECISION, null);
         if (precision != null)
             return precision.length() == 3 ? precision.charAt(2) - '0' : 0;
         else
-            return PREFS_DEFAULT_BTC_SHIFT;
+            return PREFS_DEFAULT_MOTA_SHIFT;
     }
 
     public Coin getBtcBase() {
@@ -239,7 +239,7 @@ public class Configuration {
             final Coin cachedExchangeRateCoin = Coin.valueOf(prefs.getLong(PREFS_KEY_CACHED_EXCHANGE_RATE_COIN, 0));
             final Fiat cachedExchangeRateFiat = Fiat.valueOf(cachedExchangeCurrency,
                     prefs.getLong(PREFS_KEY_CACHED_EXCHANGE_RATE_FIAT, 0));
-            return new ExchangeRate(new org.bitcoinj.utils.ExchangeRate(cachedExchangeRateCoin, cachedExchangeRateFiat),
+            return new ExchangeRate(new org.motacoinj.utils.ExchangeRate(cachedExchangeRateCoin, cachedExchangeRateFiat),
                     null);
         } else {
             return null;

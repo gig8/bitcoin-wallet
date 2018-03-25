@@ -17,7 +17,7 @@
 
 package de.schildbach.wallet.ui.send;
 
-import org.bitcoinj.core.VersionedChecksummedBytes;
+import org.motacoinj.core.VersionedChecksummedBytes;
 
 import de.schildbach.wallet.service.BlockchainService;
 import de.schildbach.wallet.ui.AbstractBindServiceActivity;

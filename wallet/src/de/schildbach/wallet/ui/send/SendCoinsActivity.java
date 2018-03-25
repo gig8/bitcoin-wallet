@@ -19,7 +19,7 @@ package de.schildbach.wallet.ui.send;
 
 import javax.annotation.Nullable;
 
-import org.bitcoinj.core.Coin;
+import org.motacoinj.core.Coin;
 
 import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.data.PaymentIntent;

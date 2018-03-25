@@ -1,33 +1,33 @@
 SUPPORTED SPECIFICATIONS
 ========================
 
-* [BIP-13](https://github.com/bitcoin/bips/blob/master/bip-0013.mediawiki): Address format for pay-to-script-hash
-* [BIP-14](https://github.com/bitcoin/bips/blob/master/bip-0014.mediawiki): Protocol version and user agent
-* [BIP-21](https://github.com/bitcoin/bips/blob/master/bip-0021.mediawiki): URI scheme for making Bitcoin payments
-* [BIP-31](https://github.com/bitcoin/bips/blob/master/bip-0031.mediawiki): Pong message
-* [BIP-32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki): Hierarchical deterministic wallets
-* [BIP-35](https://github.com/bitcoin/bips/blob/master/bip-0035.mediawiki): Mempool message
-* [BIP-37](https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki): Connection bloom filtering
-* [BIP-38](https://github.com/bitcoin/bips/blob/master/bip-0038.mediawiki): Passphrase-protected private key
-* [BIP-43](https://github.com/bitcoin/bips/blob/master/bip-0043.mediawiki): Purpose field for deterministic wallets
-* [BIP-66](https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki): Strict DER signatures
-* [BIP-70](https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki): Payment protocol
-* [BIP-71](https://github.com/bitcoin/bips/blob/master/bip-0071.mediawiki): Payment protocol MIME types
+* [BIP-13](https://github.com/motacoin/bips/blob/master/bip-0013.mediawiki): Address format for pay-to-script-hash
+* [BIP-14](https://github.com/motacoin/bips/blob/master/bip-0014.mediawiki): Protocol version and user agent
+* [BIP-21](https://github.com/motacoin/bips/blob/master/bip-0021.mediawiki): URI scheme for making MotaCoin payments
+* [BIP-31](https://github.com/motacoin/bips/blob/master/bip-0031.mediawiki): Pong message
+* [BIP-32](https://github.com/motacoin/bips/blob/master/bip-0032.mediawiki): Hierarchical deterministic wallets
+* [BIP-35](https://github.com/motacoin/bips/blob/master/bip-0035.mediawiki): Mempool message
+* [BIP-37](https://github.com/motacoin/bips/blob/master/bip-0037.mediawiki): Connection bloom filtering
+* [BIP-38](https://github.com/motacoin/bips/blob/master/bip-0038.mediawiki): Passphrase-protected private key
+* [BIP-43](https://github.com/motacoin/bips/blob/master/bip-0043.mediawiki): Purpose field for deterministic wallets
+* [BIP-66](https://github.com/motacoin/bips/blob/master/bip-0066.mediawiki): Strict DER signatures
+* [BIP-70](https://github.com/motacoin/bips/blob/master/bip-0070.mediawiki): Payment protocol
+* [BIP-71](https://github.com/motacoin/bips/blob/master/bip-0071.mediawiki): Payment protocol MIME types
 * [RFC 6979](https://tools.ietf.org/html/rfc6979): Deterministic usage of ECDSA
 
 
 ## UNSUPPORTED OR PARTIALLY SUPPORTED SPECIFICATIONS
 
-[BIP-44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki): Multi-account hierarchy for deterministic wallets
+[BIP-44](https://github.com/motacoin/bips/blob/master/bip-0044.mediawiki): Multi-account hierarchy for deterministic wallets
 
 We deliberately chose not to support multiple accounts per wallet. As BIP-44 requires supporting
 multiple accounts, we are using BIP-32 instead. This implies wallets can't be shared between
 BIP-32 and BIP-44 compatible wallets, as they would see a different transaction history for the
 same seed.
 
-[BIP-72](https://github.com/bitcoin/bips/blob/master/bip-0072.mediawiki): `bitcoin:` URI extensions for payment protocol
+[BIP-72](https://github.com/motacoin/bips/blob/master/bip-0072.mediawiki): `motacoin:` URI extensions for payment protocol
 
-The spec is supported, except the _"...it should ignore the bitcoin address/amount/label/message in
+The spec is supported, except the _"...it should ignore the motacoin address/amount/label/message in
 the URI..."_ part of the recommendation. Important: If you use the request parameter, you have one
 of the following choices. If you don't follow one of those, your linked payment request won't be
 accepted.

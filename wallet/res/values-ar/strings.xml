@@ -186,7 +186,7 @@
   <string name="scan_camera_problem_dialog_message">هناك مشكلة في الكاميرا. ربما تحتاج إلى إعادة تشغيل الجهاز.</string>
   <string name="input_parser_io_error">تعذر قراءة البيانات:\n%s</string>
   <string name="input_parser_cannot_classify">تعذر تصنيف المدخل:\n%s</string>
-  <string name="input_parser_invalid_bitcoin_uri">عنوان بيتكوين غير صالح:\n%s</string>
+  <string name="input_parser_invalid_motacoin_uri">عنوان بيتكوين غير صالح:\n%s</string>
   <string name="input_parser_invalid_address">لقد حصلت على عنوان بيتكوين غير صالح! \n(هل يحتمل وجود خلط بين Mainnet / Testnet؟)</string>
   <string name="input_parser_unverifyable_paymentrequest">تعذر التحقق من طلب الدفع:\n%s</string>
   <string name="input_parser_invalid_paymentrequest">طلب دفع غير صالح:\n%s</string>
@@ -237,7 +237,7 @@
   <string name="about_license_title">رخصة</string>
   <string name="about_source_title">الشيفرة المصدرية</string>
   <string name="about_category_credits">هذا التطبيق يَستخدم ...</string>
-  <string name="about_credits_bitcoinj_title">bitcoinj %s، هو إدخال و دعم لبروتوكول بتكوين</string>
+  <string name="about_credits_motacoinj_title">motacoinj %s، هو إدخال و دعم لبروتوكول بتكوين</string>
   <string name="about_credits_zxing_title">ZXing</string>
   <string name="about_market_app_title">صفحة متجر غوغل للتطبيقات</string>
   <string name="about_market_app_summary">إعداد تقرير أو تقييم للتطبيق</string>

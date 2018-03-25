@@ -17,7 +17,7 @@
 
 package de.schildbach.wallet.ui.preference;
 
-import org.bitcoinj.core.VersionMessage;
+import org.motacoinj.core.VersionMessage;
 
 import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.WalletApplication;
@@ -40,7 +40,7 @@ public final class AboutFragment extends PreferenceFragment {
 
     private static final String KEY_ABOUT_VERSION = "about_version";
     private static final String KEY_ABOUT_MARKET_APP = "about_market_app";
-    private static final String KEY_ABOUT_CREDITS_BITCOINJ = "about_credits_bitcoinj";
+    private static final String KEY_ABOUT_CREDITS_BITCOINJ = "about_credits_motacoinj";
 
     @Override
     public void onAttach(final Activity activity) {
@@ -65,6 +65,6 @@ public final class AboutFragment extends PreferenceFragment {
                     Uri.parse(String.format(Constants.WEBMARKET_APP_URL, packageInfo.packageName)));
         findPreference(KEY_ABOUT_MARKET_APP).setIntent(marketIntent);
         findPreference(KEY_ABOUT_CREDITS_BITCOINJ)
-                .setTitle(getString(R.string.about_credits_bitcoinj_title, VersionMessage.BITCOINJ_VERSION));
+                .setTitle(getString(R.string.about_credits_motacoinj_title, VersionMessage.BITCOINJ_VERSION));
     }
 }

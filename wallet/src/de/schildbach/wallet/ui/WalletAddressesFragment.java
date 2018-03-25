@@ -21,12 +21,12 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.ECKey;
-import org.bitcoinj.uri.BitcoinURI;
-import org.bitcoinj.utils.Threading;
-import org.bitcoinj.wallet.Wallet;
-import org.bitcoinj.wallet.listeners.KeyChainEventListener;
+import org.motacoinj.core.Address;
+import org.motacoinj.core.ECKey;
+import org.motacoinj.uri.MotaCoinURI;
+import org.motacoinj.utils.Threading;
+import org.motacoinj.wallet.Wallet;
+import org.motacoinj.wallet.listeners.KeyChainEventListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -207,12 +207,12 @@ public final class WalletAddressesFragment extends FancyListFragment {
             }
 
             private void handleShowQr(final Address address) {
-                final String uri = BitcoinURI.convertToBitcoinURI(address, null, config.getOwnName(), null);
+                final String uri = MotaCoinURI.convertToMotaCoinURI(address, null, config.getOwnName(), null);
                 BitmapFragment.show(getFragmentManager(), Qr.bitmap(uri));
             }
 
             private void handleCopyToClipboard(final Address address) {
-                clipboardManager.setPrimaryClip(ClipData.newPlainText("Bitcoin address", address.toBase58()));
+                clipboardManager.setPrimaryClip(ClipData.newPlainText("MotaCoin address", address.toBase58()));
                 log.info("wallet address copied to clipboard: {}", address);
                 new Toast(activity).toast(R.string.wallet_address_fragment_clipboard_msg);
             }

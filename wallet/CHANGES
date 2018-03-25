@@ -4,7 +4,7 @@ v6.04-v6.05
 
 v6.03
 
-* In payment history, always show fiat amount directly below Bitcoin value.
+* In payment history, always show fiat amount directly below MotaCoin value.
 
 v6.02
 
@@ -14,7 +14,7 @@ v6.01
 
 * Economic fee can now go much lower.
 * Fix certain payments not showing up until they are confirmed.
-* Based on bitcoinj 0.14.6.
+* Based on motacoinj 0.14.6.
 
 v6.0
 
@@ -77,7 +77,7 @@ v5.32
 v5.31
 
 * Disconnects from incompatible peers much quicker.
-* Based on bitcoinj 0.14.5.
+* Based on motacoinj 0.14.5.
 
 v5.30
 
@@ -187,7 +187,7 @@ v5.05
 
 v5.04
 
-* Switch exchange rates feed to BitcoinAverage API v2.
+* Switch exchange rates feed to MotaCoinAverage API v2.
 * Update translations from Transifex.
 * Minor bugfix.
 
@@ -197,7 +197,7 @@ v5.03
 
 v5.02
 
-* Dynamic network fee. This will help dealing with an overloaded Bitcoin network.
+* Dynamic network fee. This will help dealing with an overloaded MotaCoin network.
 
 v5.01
 
@@ -289,7 +289,7 @@ v4.57
 v4.56
 
 * Minor bugfixes.
-* Based on bitcoinj 0.14.3.
+* Based on motacoinj 0.14.3.
 
 v4.55
 
@@ -299,7 +299,7 @@ v4.54
 
 * Fix for rare wrong balance calculation.
 * Labs: When sending coins, use DNSSEC to look up wallet names from the domain name system.
-* Based on bitcoinj 0.14.2.
+* Based on motacoinj 0.14.2.
 
 v4.53
 
@@ -309,7 +309,7 @@ v4.52
 
 * The network fee is now calculated on a per-byte basis, rather than per-kB. On average, this
   means a lower fee!
-* Based on bitcoinj 0.14.
+* Based on motacoinj 0.14.
 
 v4.51
 
@@ -323,7 +323,7 @@ v4.50
 v4.49
 
 * Update translations from Transifex.
-* Based on bitcoinj 0.13.6.
+* Based on motacoinj 0.13.6.
 
 v4.48
 
@@ -337,7 +337,7 @@ v4.47
 * Consider RBF (replace-by-fee) transactions as risky, so for them wait for the first
   confirmation.
 * Update Catalan translation from Transifex.
-* Based on bitcoinj 0.13.5.
+* Based on motacoinj 0.13.5.
 
 v4.46
 
@@ -345,11 +345,11 @@ v4.46
 
 v4.45
 
-* Adjusts to the new network fee rules imposed by Bitcoin Core.
+* Adjusts to the new network fee rules imposed by MotaCoin Core.
 * Now requires Android 4.0.3 (ICS) for all subprojects.
 * Update Russian, Italian, Turkish, Swedish, Spanish, Norwegian Bokmål, Japanese, Hungarian,
   Finnish, Dutch, Danish, Traditional Chinese and Brazilian Portuguese translations.
-* Based on bitcoinj 0.13.4.
+* Based on motacoinj 0.13.4.
 
 v4.44
 
@@ -364,7 +364,7 @@ v4.43
 v4.42
 
 * Optimizations & bugfixes.
-* Based on bitcoinj 0.13.3.
+* Based on motacoinj 0.13.3.
 
 v4.41
 
@@ -379,7 +379,7 @@ v4.40
 v4.39
 
 * Update Finnish translation.
-* Based on bitcoinj 0.13.2.
+* Based on motacoinj 0.13.2.
 
 v4.38
 
@@ -396,7 +396,7 @@ v4.36
 * Pay the default fee for sweeping paper wallets.
 * Update Turkish, Swedish, Norwegian Bokmål, Japanese, Italian, Hungarian, French and Danish
   translations.
-* Based on bitcoinj 0.13.1.
+* Based on motacoinj 0.13.1.
 
 v4.35
 
@@ -420,7 +420,7 @@ v4.32
 
 * Bugfixes.
 * In-app payments integration (integration-android) now available on Maven Central and jCenter.
-  Also see: https://github.com/bitcoin-wallet/bitcoin-wallet/wiki/InAppPayments
+  Also see: https://github.com/motacoin-wallet/motacoin-wallet/wiki/InAppPayments
 
 v4.31
 
@@ -476,7 +476,7 @@ v4.22
 * Show derived addresses in address book under "your addresses".
 * Show "to addresses" of received payments, rather than "from addresses".
 * Speed up blockchain sync.
-* Based on bitcoinj 0.12.3.
+* Based on motacoinj 0.12.3.
 
 v4.21
 
@@ -539,7 +539,7 @@ v4.11
 * When sending coins, there is a "quick confirm" option which pays the old higher fee.
 * Fix white/black screen that prevents some users from starting the app.
 * Fix reuse of change address in some cases.
-* Based on bitcoinj 0.12.2.
+* Based on motacoinj 0.12.2.
 
 v4.10
 
@@ -560,7 +560,7 @@ v4.07
 * Performance improvements.
 * Drop network fee by factor of 10.
 * Support rotation for HD key chains.
-* Based on bitcoinj 0.12.1.
+* Based on motacoinj 0.12.1.
 
 v4.06
 
@@ -569,7 +569,7 @@ v4.06
 
 v4.05
 
-* Re-add textual Bitcoin address to enlarged QR code.
+* Re-add textual MotaCoin address to enlarged QR code.
 
 v4.04
 
@@ -577,7 +577,7 @@ v4.04
 
 v4.03
 
-* Remove textual Bitcoin address from main screen.
+* Remove textual MotaCoin address from main screen.
 * Warning for users with pay-to-many transactions. Those will slow down their
   wallet.
 * Workaround for crash in the network monitor.
@@ -595,7 +595,7 @@ v4.01
 
 v4.0
 
-* All Bitcoin addresses are now deterministically derived from one single secret,
+* All MotaCoin addresses are now deterministically derived from one single secret,
   which was created when you installed the app for the first time. So from now on,
   only one backup is needed to recover all your future funds in that wallet.
 * The app does its best to not reuse addresses any more. "Request coins" will use a
@@ -609,7 +609,7 @@ v4.0
 * The app has a fresher, sharper looking app icon. The icon for the testnet version
   is now entirely grey.
 * On Android 4.1 or higher, the app-widget is now horizontally resizable.
-* Based on bitcoinj 0.12.
+* Based on motacoinj 0.12.
 
 v3.59
 
@@ -655,7 +655,7 @@ v3.50
 * Update Chinese, Danish, Italian and Japanese translations.
 * Update QR-code scanner to ZXing 3.1.0.
 * Small bugfixes.
-* Based on bitcoinj 0.11.3.
+* Based on motacoinj 0.11.3.
 
 v3.49
 
@@ -681,9 +681,9 @@ v3.46
 
 * New translation into Slovenian.
 * Update Hebrew translation.
-* Fix missing transactions due to once dusty outputs which are standard as of Bitcoin Core 0.9.
+* Fix missing transactions due to once dusty outputs which are standard as of MotaCoin Core 0.9.
 * Preparation for fetching payment requests via Bluetooth.
-* Based on bitcoinj 0.11.2.
+* Based on motacoinj 0.11.2.
 
 v3.44-v3.45
 
@@ -699,7 +699,7 @@ v3.41-v3.43
 
 v3.40
 
-* Support for µBTC denomination, for people who are used to low valued currencies.
+* Support for µMOTA denomination, for people who are used to low valued currencies.
 * Always use BIP70 when sending payments directly via Bluetooth.
 * Small bugfixes.
 
@@ -725,7 +725,7 @@ v3.35
 
 * Protect wallet against dust spam.
 * Fixed some bugs in the payment protocol.
-* Based on bitcoinj 0.11.1.
+* Based on motacoinj 0.11.1.
 
 v3.34
 
@@ -741,13 +741,13 @@ v3.32
 
 v3.31
 
-* Default denomination has changed to millibitcoin (mBTC).
-* Cross-calculated exchange rates for currencies without Bitcoin volume. Thanks to BitcoinAverage.
+* Default denomination has changed to millimotacoin (mMOTA).
+* Cross-calculated exchange rates for currencies without MotaCoin volume. Thanks to MotaCoinAverage.
 * Better handling of errors when sending coins, specifically when funds are exceeded.
 * Labs: Uses BIP70 payment protocol for tap-to-pay and scan-to-pay, if enabled in the settings.
 * New translations into Traditional Chinese, Macedonian and Esperanto. Updated Spanish.
 * Resolved issues with wallets with many transactions.
-* Based on bitcoinj 0.11.
+* Based on motacoinj 0.11.
 
 v3.30
 
@@ -777,8 +777,8 @@ v3.26
 
 v3.25
 
-* support for mBTC denomination
-* also use weighted exchange rates from BitcoinAverage
+* support for mMOTA denomination
+* also use weighted exchange rates from MotaCoinAverage
 * fixed issue with camera autofocus on some Samsung Galaxy devices
 
 v3.24
@@ -794,7 +794,7 @@ v3.22
 * sound effect when sending a payment
 * fixed rare issues with transactions missing or shown as unconfirmed
 * Hungarian translation
-* based on bitcoinj 0.10.2
+* based on motacoinj 0.10.2
 
 v3.21
 
@@ -819,7 +819,7 @@ v3.18
 v3.17
 
 * fixed issue with emptying wallet
-* based on bitcoinj 0.10.1
+* based on motacoinj 0.10.1
 
 v3.16
 
@@ -830,7 +830,7 @@ v3.15
 
 * auto-rotate weak keys
 * option for easy emptying wallet
-* based on bitcoinj 0.10
+* based on motacoinj 0.10
 
 v3.14
 
@@ -843,7 +843,7 @@ v3.13
 
 v3.12
 
-* direct button on main screen for scanning a Bitcoin request QR code
+* direct button on main screen for scanning a MotaCoin request QR code
 * extended logging
 
 v3.11
@@ -853,12 +853,12 @@ v3.11
 v3.10
 
 * embed currency calculator into send and request coins forms
-* change default Bitcoin precision from 8 to 4
+* change default MotaCoin precision from 8 to 4
 
 v3.09
 
 * calculate correct fee to ensure speedy blockchain confirmation
-* based on bitcoinj 0.9
+* based on motacoinj 0.9
 
 v3.08
 
@@ -891,7 +891,7 @@ v3.0
 * new installs are instantly fully updated and useable
 * got rid of block chain snapshot in APK, installs updates much faster
 * lots of small improvements and bugfixes
-* based on bitcoinj 0.8
+* based on motacoinj 0.8
 
 v2.49
 
@@ -909,14 +909,14 @@ v2.47
 v2.46
 
 * bugfixes
-* based on bitcoinj 0.7.3
+* based on motacoinj 0.7.3
 
 v2.45
 
 * new labs feature: block explorer
 * request coins from locally installed app
 * save memory and stack
-* based on bitcoinj 0.7.2
+* based on motacoinj 0.7.2
 
 v2.44
 
@@ -930,11 +930,11 @@ v2.42
 
 * fixed crash on Froyo (Android 2.2) devices
 * allow importing private keys from automatic backups
-* based on bitcoinj 0.7.1
+* based on motacoinj 0.7.1
 
 v2.41
 
-* labs preference for setting bitcoin value precision
+* labs preference for setting motacoin value precision
 
 v2.40
 
@@ -945,9 +945,9 @@ v2.40
 * preference for showing the connectivity indicator
 * shortcut to request coins by long tapping on qr code
 * peer monitor shows more info
-* fallback for fetching exchange rates (bitcoincharts first, then blockchain)
+* fallback for fetching exchange rates (motacoincharts first, then blockchain)
 * lots of small improvements and bugfixes
-* based on bitcoinj 0.7
+* based on motacoinj 0.7
 
 v2.39
 
@@ -956,7 +956,7 @@ v2.39
 v2.38
 
 * fixed testnet3 blockchain sync problem
-* based on bitcoinj 0.6.1
+* based on motacoinj 0.6.1
 
 v2.37
 
@@ -1007,7 +1007,7 @@ v2.22
 
 * proper handling of coinbase transactions
 * watch transaction propagation (build-up of confidence) when sending coins
-* based on bitcoinj 0.6
+* based on motacoinj 0.6
 * blockchain can be reset without exiting the app
 
 v2.21

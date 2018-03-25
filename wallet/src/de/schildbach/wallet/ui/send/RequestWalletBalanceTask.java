@@ -45,12 +45,12 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.core.Sha256Hash;
-import org.bitcoinj.core.UTXO;
-import org.bitcoinj.script.Script;
-import org.bitcoinj.script.ScriptBuilder;
+import org.motacoinj.core.Address;
+import org.motacoinj.core.Coin;
+import org.motacoinj.core.Sha256Hash;
+import org.motacoinj.core.UTXO;
+import org.motacoinj.script.Script;
+import org.motacoinj.script.ScriptBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -123,7 +123,7 @@ public final class RequestWalletBalanceTask {
         backgroundHandler.post(new Runnable() {
             @Override
             public void run() {
-                org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+                org.motacoinj.core.Context.propagate(Constants.CONTEXT);
 
                 try {
                     final List<ElectrumServer> servers = loadElectrumServers(

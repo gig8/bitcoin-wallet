@@ -113,7 +113,7 @@
 	<string name="scan_camera_problem_dialog_title">Извини</string>
 	<string name="scan_camera_problem_dialog_message">Камерата јавува проблем. Најверојатно треба да го рестартираш уредот.</string>
 	<string name="input_parser_cannot_classify">Не може да се класифицира внесот:\n%s</string>
-	<string name="input_parser_invalid_bitcoin_uri">Невалидно Биткоин URI:\n%s</string>
+	<string name="input_parser_invalid_motacoin_uri">Невалидно Биткоин URI:\n%s</string>
 	<string name="input_parser_invalid_address">Невалидна биткоин адреса!\n(Згреши со Mainnet/Testnet?)</string>
 	<string name="input_parser_invalid_transaction">Невалидна трансакција:\n%s</string>
 	<string name="preferences_activity_title">Поставувања</string>
@@ -148,7 +148,7 @@
 	<string name="about_title">За апликацијата</string>
 	<string name="about_license_title">Лиценца</string>
 	<string name="about_category_credits">Оваа апликација користи…</string>
-	<string name="about_credits_bitcoinj_title">bitcoinj %s</string>
+	<string name="about_credits_motacoinj_title">motacoinj %s</string>
 	<string name="about_credits_zxing_title">ZXing</string>
 	<string name="about_community_googleplus_title">Google+ заедница</string>
 	<string name="about_community_googleplus_summary">Дискусија за апликацијата</string>

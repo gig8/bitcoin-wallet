@@ -1,34 +1,34 @@
-<b>Mindig legyenek nálad a Bitcoin-jaid a zsebedben!</b> Úgy tudsz fizetni, hogy gyorsan beolvasol egy QR kódot. Kereskedőként megkapod a fizetséget megbízhatóan és azonnal. A Bitcoin Wallet az első mobil Bitcoin alkalmazás és vitathatatlanul a legbiztonságosabb is!
+<b>Mindig legyenek nálad a MotaCoin-jaid a zsebedben!</b> Úgy tudsz fizetni, hogy gyorsan beolvasol egy QR kódot. Kereskedőként megkapod a fizetséget megbízhatóan és azonnal. A MotaCoin Wallet az első mobil MotaCoin alkalmazás és vitathatatlanul a legbiztonságosabb is!
 
 
 <b>JELLEMZŐK</b>
 
 • Nincs regisztráció és nem szükséges semmiféle háttéralkalmazás futtatása (web, vagy cloud)! Decentralizált és közvetlen (P2P).
-• Bitcoin összeg megjelenítési módok: BTC, mBTC és µBTC.
+• MotaCoin összeg megjelenítési módok: MOTA, mMOTA és µMOTA.
 • Átváltás a saját valutádra, oda-vissza.
-• Bitcoin küldés és fogadás NFC-n, QR kódokon vagy Bitcoin URL-eken keresztül.
-• Címtár a rendszeresen használt Bitcoin címek számára.
+• MotaCoin küldés és fogadás NFC-n, QR kódokon vagy MotaCoin URL-eken keresztül.
+• Címtár a rendszeresen használt MotaCoin címek számára.
 • Offline állapotban is fizethetsz - Bluetooth segítségével.
-• Rendszerüzenet Bitcoin érkezésekor.
+• Rendszerüzenet MotaCoin érkezésekor.
 • Papírtárcák besöprése (pl. amik hűtőháznak vannak használva).
-• Widget a Bitcoin egyenlegről.
+• Widget a MotaCoin egyenlegről.
 
 
 <b>HOZZÁJÁRULÁS</b>
 
-A Bitcoin Wallet <b>nyílt forráskódú</b> és <b>ingyenes szoftver</b>. Licenc: GPLv3
+A MotaCoin Wallet <b>nyílt forráskódú</b> és <b>ingyenes szoftver</b>. Licenc: GPLv3
 https://www.gnu.org/licenses/gpl-3.0.en.html
 
 A forráskódunk elérhető a GitHub-on:
-https://github.com/bitcoin-wallet/bitcoin-wallet
+https://github.com/motacoin-wallet/motacoin-wallet
 
 Minden fordítást a Transifex kezelt:
-https://www.transifex.com/bitcoin-wallet/bitcoin-wallet/
+https://www.transifex.com/motacoin-wallet/motacoin-wallet/
 
 
 <b>AJÁNLÓLEVELEK</b>
 
-• Sok mobiltárca a Bitcoin Wallet-re alapozza a kódját. Például: blockchain.info és BTCX.
+• Sok mobiltárca a MotaCoin Wallet-re alapozza a kódját. Például: blockchain.info és MOTAX.
 • Ajánlva a BitPay által.
 
 

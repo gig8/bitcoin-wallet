@@ -17,10 +17,10 @@
 
 package de.schildbach.wallet.service;
 
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.utils.MonetaryFormat;
-import org.bitcoinj.wallet.Wallet;
-import org.bitcoinj.wallet.Wallet.BalanceType;
+import org.motacoinj.core.Coin;
+import org.motacoinj.utils.MonetaryFormat;
+import org.motacoinj.wallet.Wallet;
+import org.motacoinj.wallet.Wallet.BalanceType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -91,7 +91,7 @@ public final class InactivityNotificationService extends IntentService {
 
     @Override
     protected void onHandleIntent(final Intent intent) {
-        org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+        org.motacoinj.core.Context.propagate(Constants.CONTEXT);
 
         if (ACTION_DISMISS.equals(intent.getAction()))
             handleDismiss();
@@ -112,10 +112,10 @@ public final class InactivityNotificationService extends IntentService {
             final Coin availableBalance = wallet.getBalance(BalanceType.AVAILABLE_SPENDABLE);
             final boolean canDonate = Constants.DONATION_ADDRESS != null && availableBalance.isPositive();
 
-            final MonetaryFormat btcFormat = config.getFormat();
+            final MonetaryFormat motaFormat = config.getFormat();
             final String title = getString(R.string.notification_inactivity_title);
             final StringBuilder text = new StringBuilder(
-                    getString(R.string.notification_inactivity_message, btcFormat.format(estimatedBalance)));
+                    getString(R.string.notification_inactivity_message, motaFormat.format(estimatedBalance)));
             if (canDonate)
                 text.append("\n\n").append(getString(R.string.notification_inactivity_message_donate));
 

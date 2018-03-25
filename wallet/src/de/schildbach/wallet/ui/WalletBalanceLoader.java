@@ -19,10 +19,10 @@ package de.schildbach.wallet.ui;
 
 import java.util.concurrent.RejectedExecutionException;
 
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.utils.Threading;
-import org.bitcoinj.wallet.Wallet;
-import org.bitcoinj.wallet.Wallet.BalanceType;
+import org.motacoinj.core.Coin;
+import org.motacoinj.utils.Threading;
+import org.motacoinj.wallet.Wallet;
+import org.motacoinj.wallet.Wallet.BalanceType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -90,7 +90,7 @@ public final class WalletBalanceLoader extends AsyncTaskLoader<Coin> {
 
     @Override
     public Coin loadInBackground() {
-        org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+        org.motacoinj.core.Context.propagate(Constants.CONTEXT);
 
         return wallet.getBalance(BalanceType.ESTIMATED);
     }

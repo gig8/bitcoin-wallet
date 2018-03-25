@@ -24,8 +24,8 @@ import java.util.Map;
 import java.util.WeakHashMap;
 import java.util.concurrent.RejectedExecutionException;
 
-import org.bitcoinj.core.Peer;
-import org.bitcoinj.core.VersionMessage;
+import org.motacoinj.core.Peer;
+import org.motacoinj.core.VersionMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

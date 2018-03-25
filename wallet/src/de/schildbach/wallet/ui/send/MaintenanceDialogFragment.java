@@ -22,12 +22,12 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.crypto.KeyCrypterException;
-import org.bitcoinj.utils.MonetaryFormat;
-import org.bitcoinj.wallet.DeterministicUpgradeRequiresPassword;
-import org.bitcoinj.wallet.Wallet;
+import org.motacoinj.core.Coin;
+import org.motacoinj.core.Transaction;
+import org.motacoinj.crypto.KeyCrypterException;
+import org.motacoinj.utils.MonetaryFormat;
+import org.motacoinj.wallet.DeterministicUpgradeRequiresPassword;
+import org.motacoinj.wallet.Wallet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spongycastle.crypto.params.KeyParameter;
@@ -230,7 +230,7 @@ public class MaintenanceDialogFragment extends DialogFragment {
         backgroundHandler.post(new Runnable() {
             @Override
             public void run() {
-                org.bitcoinj.core.Context.propagate(Constants.CONTEXT);
+                org.motacoinj.core.Context.propagate(Constants.CONTEXT);
 
                 try {
                     wallet.doMaintenance(encryptionKey, true);

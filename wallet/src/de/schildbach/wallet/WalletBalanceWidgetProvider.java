@@ -19,11 +19,11 @@ package de.schildbach.wallet;
 
 import java.lang.reflect.Method;
 
-import org.bitcoinj.core.Coin;
-import org.bitcoinj.utils.Fiat;
-import org.bitcoinj.utils.MonetaryFormat;
-import org.bitcoinj.wallet.Wallet;
-import org.bitcoinj.wallet.Wallet.BalanceType;
+import org.motacoinj.core.Coin;
+import org.motacoinj.utils.Fiat;
+import org.motacoinj.utils.MonetaryFormat;
+import org.motacoinj.wallet.Wallet;
+import org.motacoinj.wallet.Wallet.BalanceType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -107,9 +107,9 @@ public class WalletBalanceWidgetProvider extends AppWidgetProvider {
             final int appWidgetId, final Bundle appWidgetOptions, final Coin balance) {
         final Configuration config = new Configuration(PreferenceManager.getDefaultSharedPreferences(context),
                 context.getResources());
-        final MonetaryFormat btcFormat = config.getFormat();
+        final MonetaryFormat motaFormat = config.getFormat();
 
-        final Spannable balanceStr = new MonetarySpannable(btcFormat.noCode(), balance).applyMarkup(null,
+        final Spannable balanceStr = new MonetarySpannable(motaFormat.noCode(), balance).applyMarkup(null,
                 MonetarySpannable.STANDARD_INSIGNIFICANT_SPANS);
 
         final Cursor data = context.getContentResolver().query(
@@ -137,15 +137,15 @@ public class WalletBalanceWidgetProvider extends AppWidgetProvider {
 
         final RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.wallet_balance_widget_content);
 
-        final String currencyCode = btcFormat.code();
-        if (MonetaryFormat.CODE_BTC.equals(currencyCode))
-            views.setImageViewResource(R.id.widget_wallet_prefix, R.drawable.currency_symbol_btc);
-        else if (MonetaryFormat.CODE_MBTC.equals(currencyCode))
-            views.setImageViewResource(R.id.widget_wallet_prefix, R.drawable.currency_symbol_mbtc);
-        else if (MonetaryFormat.CODE_UBTC.equals(currencyCode))
-            views.setImageViewResource(R.id.widget_wallet_prefix, R.drawable.currency_symbol_ubtc);
+        final String currencyCode = motaFormat.code();
+        if (MonetaryFormat.CODE_MOTA.equals(currencyCode))
+            views.setImageViewResource(R.id.widget_wallet_prefix, R.drawable.currency_symbol_mota);
+        else if (MonetaryFormat.CODE_MMOTA.equals(currencyCode))
+            views.setImageViewResource(R.id.widget_wallet_prefix, R.drawable.currency_symbol_mmota);
+        else if (MonetaryFormat.CODE_UMOTA.equals(currencyCode))
+            views.setImageViewResource(R.id.widget_wallet_prefix, R.drawable.currency_symbol_umota);
 
-        views.setTextViewText(R.id.widget_wallet_balance_btc, balanceStr);
+        views.setTextViewText(R.id.widget_wallet_balance_mota, balanceStr);
         views.setViewVisibility(R.id.widget_wallet_balance_local, localBalanceStr != null ? View.VISIBLE : View.GONE);
         views.setTextViewText(R.id.widget_wallet_balance_local, localBalanceStr);
 
